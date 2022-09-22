@@ -1,0 +1,8 @@
+{
+    "Inventory": true,
+    "Project": true,
+    "Pengajuan": true,
+    "Absen": true,
+    "Surat": true,
+    "Admin": true
+}
