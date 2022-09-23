@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <!-- Total Pengajuan ends -->
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         <div class="card">
                             <div
                                 class="
@@ -117,9 +117,9 @@
                                 <div id="line-area-chart"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Line Chart Starts -->
-    <div class="col-6">
+    {{-- <div class="col-6">
         <div class="card">
           <div
             class="
@@ -151,7 +151,7 @@
       <!-- Line Chart Ends -->
                 </div>
             </div>
-        </div>
+        </div> --}}
         
        
         <!-- END: Content-->

@@ -494,7 +494,7 @@
                                             </section>
                                             <!-- penjualan -->
                                             <div class="card-footer">
-                                                <button type="hidden" value="Perubahan" name="status" 
+                                                <button type="hidden" value="Perubahan" name="keterangan" 
                                                     class="btn btn-success"
                                                     onclick="return confirm ('Apakah anda yakin?')">Update Project</button>
                                             </div>

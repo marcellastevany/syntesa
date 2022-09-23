@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('tgl_project')->nullable();
             $table->string('nama_project')->nullable();
             $table->string('sales_order')->nullable();
-            $table->string('status')->nullable();
+            $table->string('keterangan')->nullable();
             $table->text('deskripsi')->nullable();
             // $table->string('lampiran_id')->nullable();
             $table->timestamps();

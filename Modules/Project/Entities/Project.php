@@ -27,5 +27,23 @@ class Project extends Model
     {
         return $this->hasMany(ProjectHistory::class, 'project_id');
     }
-    
-}
+    public function histori()
+    {
+        return $this->belongsTo(HistoriPengajuanProjek::class);
+    }
+    public function role()
+    {
+        return $this->hasMany(Role::class,'role_id','project_id');
+    }
+    public function divisi()
+    {
+        return $this->hasMany(Divisi::class);
+    }
+    public function user()
+    {
+        return $this->hasMany(User::class );
+    }
+
+   
+    }
+ 

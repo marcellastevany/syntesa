@@ -95,8 +95,17 @@
                                                     </div>
                                                 </div>
                                             </section>
-                                            <!-- Basic Textarea end -->
-                                            <!-- penjualan -->
+                                        {{-- ubah --}}
+                                            <input type="hidden" id="status" name="status" class="form-control"
+                                            value="4">
+                                        <input type="hidden" id="jabatan" name="jabatan" class="form-control"
+                                            value="7">
+                                        <input type="hidden" id="divisi" name="divisi" class="form-control"
+                                            value="3">
+                                        <input type="hidden" id="jenis_pengajuan" name="jenis_pengajuan" class="form-control"
+                                            value="2">
+                                            {{-- ubah --}}
+
                                             <div class="card-header">
                                                 <br>
                                                 <b class="card-title text-center">Biaya</b>
@@ -187,7 +196,7 @@
 
                                             <!-- penjualan -->
                                             <div class="card-footer">
-                                                <button type="hidden" value="Normal" name="status"
+                                                <button type="hidden" value="Normal" name="keterangan"
                                                     class="btn btn-success"
                                                     onclick="return confirm ('Apakah anda yakin?')">Ajukan Project</button>
                                             </div>

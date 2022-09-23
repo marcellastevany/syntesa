@@ -4,7 +4,9 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item me-auto"><a class="navbar-brand"
                         href="../../../html/ltr/vertical-menu-template/index.html"><span class="brand-logo"></span>
-                        <h2 class="brand-text">SYNTESA</h2>
+                        <img src="https://sayagawisatabogor.com/wp-content/uploads/2021/09/LOGO-SWB.png"
+                        width="20%" alt="Logo Sayaga">
+                        <h2 class="brand-text" style="color :darkgreen">Project</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
                             class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i

@@ -57,68 +57,69 @@
                                                         $countSales=$sales->count();
                                                         $salesKosong=$project->project()->whereNull('sales_order')->count();
                                                     @endphp
-                                                         @if ($countsales>0) --}}
-                                                         @if ($project->sales_order)
-                                                        <a href="{{ asset('storage/' . str_replace('public/', '', $project->sales_order)) }}"
-                                                            target="blank" class="btn btn-outline-primary">Lihat</a>    
+                                                         @if ($countsales > 0) --}}
+                                                        @if ($project->sales_order)
+                                                            <a href="{{ asset('storage/' . str_replace('public/', '', $project->sales_order)) }}"
+                                                                target="blank" class="btn btn-outline-primary">Lihat</a>
                                                         @else
-                                                        <a href="#"
-                                                            target="blank" class="btn btn-outline-danger">Lihat</a>   
-                                                        @endif 
+                                                            <a href="#" target="blank"
+                                                                class="btn btn-outline-danger">Lihat</a>
+                                                        @endif
                                                     </td>
                                                     <td>{{ $project->deskripsi }} </td>
                                                     <td>
 
-                                                        @if ($project->status=="Perubahan")
-                                                        <span class="badge rounded-pill badge-light-danger">Perubahan</span>
-                                                        @elseif ($project->status=="Normal")
-                                                        <span class="badge rounded-pill badge-light-info">Normal</span>
+                                                        @if ($project->status == 'Perubahan')
+                                                            <span
+                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
+                                                        @elseif ($project->status == 'Normal')
+                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
                                                         @endif
-                                                
+
 
 
                                                     </td>
                                                     <td>
                                                         @php
-                                                            $lihat = Modules\Project\Entities\Lampiran::select()
-                                                                ->where('project_id', $project->id);
-                                                            $countLihat=$lihat->count();
-                                                            $lampiranKosong=$project->lampiran()->whereNull('dokumen')->count();
+                                                            $lihat = Modules\Project\Entities\Lampiran::select()->where('project_id', $project->id);
+                                                            $countLihat = $lihat->count();
+                                                            $lampiranKosong = $project
+                                                                ->lampiran()
+                                                                ->whereNull('dokumen')
+                                                                ->count();
                                                         @endphp
-                                                        @if ($countLihat>0)
+                                                        @if ($countLihat > 0)
                                                             <a href="/project/pengajuan/"{{ $project->id }}
                                                                 class="btn btn-icon 
-                                                                @if ($lampiranKosong>0)
-                                                                    btn-danger
+                                                                @if ($lampiranKosong > 0) btn-danger
                                                                 @else
-                                                                    btn-info
-                                                                @endif
-                                                                " title="Lampiran"data-bs-toggle="modal"
+                                                                    btn-info @endif
+                                                                "
+                                                                title="Lampiran"data-bs-toggle="modal"
                                                                 data-bs-target="#lampiran_{{ $project->id }}"><span
                                                                     data-feather="eye"></span></a>
-                                                            
                                                         @else
                                                             <a href="/project/pengajuan/"{{ $project->id }}
                                                                 class="btn btn-icon btn-danger" data-bs-toggle="modal"
                                                                 data-bs-target="#lampiran_{{ $project->id }}"><span
                                                                     data-feather="eye"></span></a>
                                                         @endif
-                                                            
-                                                            <a href="/project/lihat/{{ $project->id }}"
-                                                                class="btn btn-icon btn-primary" title="Detail"><span
-                                                                    data-feather="book-open"></span></a>
-                                                            <a href="{{ route('pengajuan.edit', $project->id) }}"
-                                                                class="btn btn-icon btn-warning" title="Edit"><span
-                                                                    data-feather="edit"></span></a>
-                                                            <form action="/project/pengajuan/{{ $project->id }}"
-                                                                method="POST" class="d-inline">
-                                                                @method('delete')
-                                                                @csrf
-                                                                <button class="btn btn-icon btn-danger border-0" title="Hapus"
-                                                                    onclick="return confirm('Hapus ?')"><span
-                                                                        data-feather="trash-2"></span></button>
-                                                            </form>
-                                                        
+
+                                                        <a href="/project/lihat/{{ $project->id }}"
+                                                            class="btn btn-icon btn-primary" title="Detail"><span
+                                                                data-feather="book-open"></span></a>
+                                                        <a href="{{ route('pengajuan.edit', $project->id) }}"
+                                                            class="btn btn-icon btn-warning" title="Edit"><span
+                                                                data-feather="edit"></span></a>
+                                                        <form action="/project/pengajuan/{{ $project->id }}"
+                                                            method="POST" class="d-inline">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="btn btn-icon btn-danger border-0" title="Hapus"
+                                                                onclick="return confirm('Hapus ?')"><span
+                                                                    data-feather="trash-2"></span></button>
+                                                        </form>
+
                                                     </td>
                                                 </tr>
 
@@ -144,8 +145,7 @@
                                                                                     Lampiran </a>
                                                                                 <a class="btn btn-primary mb-1 btn-sm"
                                                                                     data-bs-toggle="collapse"
-                                                                                    href="#biru"
-                                                                                   >
+                                                                                    href="#biru">
                                                                                     Note
                                                                                 </a>
 

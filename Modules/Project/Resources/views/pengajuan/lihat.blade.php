@@ -245,6 +245,7 @@ data-menu="vertical-menu-modern" data-col="">
                 </div>
             </div>
         </div>
+        
         <!-- END: Content-->
     </body>
     {{-- <script type="text/javascript">

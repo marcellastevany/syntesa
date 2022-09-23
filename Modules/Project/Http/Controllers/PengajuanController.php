@@ -12,10 +12,12 @@ use Modules\Project\Entities\Lampiran;
 use Illuminate\Support\Facades\Storage;
 use Modules\Project\Entities\Pengajuan;
 use Modules\Project\Entities\Pendapatan;
-use Illuminate\Contracts\Support\Renderable;
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use Modules\Project\Entities\ProjectHistory;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Project\Entities\ProjectHistory;
+// use Modules\Project\Entities\Historipengajuanprojek;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Modules\Pengajuan\Entities\HistoriPengajuanProjek;
 
 
 
@@ -72,17 +74,34 @@ class PengajuanController extends Controller
         if ($request->file('sales_order')) {
             $so = $request->file('sales_order')->store('public/sales_order_project');
         }
+
+        $hitung = Project::select()->get()->count();
+        $id = $hitung + 1;
         // $no = Project::select()->orderby('created_at', 'desc')->get()->first();
         // $nomor = $no->no_project + 0.1;
         $project = Project::create([
+            'id' => $id,
             'no_project' => $request->no_project,
             'pemegang_project' => $request->pemegang_project,
             'tgl_project' => $request->tgl_project,
             'nama_project' => $request->nama_project,
             'sales_order' => $so,
             'deskripsi' => $request->deskripsi,
-            'status' => $request->status,
+            'keterangan' => $request->keterangan,
+            'jabatan' => $request->jabatan,
+            'divisi' => $request->divisi,
+            'jenis_pengajuan' => $request->jenis_pengajuan,
+       
         ]);
+
+        HistoriPengajuanProjek::create([
+            'project_id' => $id,
+            'jabatan'=> $request->jabatan, 
+            'status'=> $request->status,
+    
+        ]);
+      
+    
 
         if ($kategori_biaya ?? false) {
             foreach ($kategori_biaya as $key => $val) {
@@ -249,7 +268,7 @@ class PengajuanController extends Controller
             'tgl_project' => $request->tgl_project,
             'nama_project' => $request->nama_project,
             'deskripsi' => $request->deskripsi,
-            'status' => 'Perubahan',
+            'keterangan' => 'Perubahan',
         ];
         if ($request->hasFile('sales_order')) {
             $dtProject['sales_order'] = $request->file('sales_order')->store('public/sales_order_project');
