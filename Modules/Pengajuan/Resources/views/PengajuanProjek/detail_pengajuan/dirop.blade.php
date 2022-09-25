@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
-        data-menu="vertical-menu-modern" data-col="">
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click"
+data-menu="vertical-menu-modern" data-col="">
         <!-- BEGIN: Content-->
         <div class="app-content content ">
             <div class="content-overlay"></div>
@@ -62,6 +62,35 @@
 
                                                 @if (!empty($biayas))
                                                     @foreach ($biayas as $biaya)
+                                                    @php
+                                                
+                                                    $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+                                                        ->where('project_id', $project->id)
+                                                        ->orderby('created_at', 'desc')
+                                                        ->get()
+                                                        ->first();
+                                                    
+                                                    $projek = Modules\Project\Entities\Project::select()
+                                                        ->where('id', $histori->project_id)
+                                                        ->get()
+                                                        ->first();
+                                                    $user = App\Models\User::select()
+                                                        ->where('id', $projek->user_id)
+                                                        ->get()
+                                                        ->first();
+                                                    $divisi = Modules\Pengajuan\Entities\Divisi::select()
+                                                        ->where('divisi', $projek->divisi)
+                                                        ->get()
+                                                        ->first();
+                                                    $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+                                                        ->where('status', $histori->status)
+                                                        ->get()
+                                                        ->first();
+                                                    $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                                        ->where('jabatan', $histori->jabatan)
+                                                        ->get()
+                                                        ->first();
+                                                @endphp
                                                         {{-- @php
                                            $project = Modules\Pengajuan\Entities\Project::select()
                                                     ->where('id', $biaya->id)
@@ -181,10 +210,11 @@
                                                 data-sort="white sample">
                                                 <p style="text-align:center">Diajukan Oleh :</p>
                                                 <div class="visible-print text-center">
-                                                    {!! QrCode::size(100)->generate(Request::url()) !!}
-
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project "); !!}
+                                              
                                                 </div>
-                                                <p style="text-align:center;">Marcella</p>
+                                                <br>
+                                                <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                             </div>
 
                                             <div class="filtr-item col-sm-2 py-1">
@@ -198,94 +228,98 @@
                                     <div class="col md-3 mb-2 ml-2">
                                         <a href="{{ url('/project/print/' . $project->id) }}" target="blank"
                                             class="btn btn-primary float-end mx-1"> Print
-
+                                         
                                         </a>
                                         <div class="modal-size-sm d-inline-block float-end">
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#small">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#small">
                                                 Riwayat
                                             </button>
                                             <!-- Modal -->
-                                            <div class="modal fade text-start" id="small" tabindex="-1">
-                                                <div class="modal-dialog modal-dialog-centered modal-sm">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel19">Riwayat</h4>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            @if ($project->historyProject()->count() > 0)
-                                                                @foreach ($project->historyProject as $h)
-                                                                    <p>
-                                                                        <a
-                                                                            href="/project/lihathistory/{{ $h->id }}">Perubahan
-                                                                            {{ $loop->iteration }} -
-                                                                            {{ $h->created_at }}</a>
-                                                                    </p>
-                                                                @endforeach
-                                                            @endif
-
-                                                        </div>
-
-                                                    </div>
+                                            <div
+                                              class="modal fade text-start"
+                                              id="small"
+                                              tabindex="-1"
+                                           
+                                            >
+                                              <div class="modal-dialog modal-dialog-centered modal-sm">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel19">Riwayat</h4>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    @if ($project->historyProject()->count()>0)
+                                                        @foreach ($project->historyProject as $h)
+                                                            <p>
+                                                                <a href="/project/lihathistory/{{ $h->id }}">Perubahan {{ $loop->iteration }} - {{ $h->created_at }}</a>
+                                                            </p>
+                                                        @endforeach
+                                                    @endif
+                                               
+                                                  </div>
+                                                 
                                                 </div>
+                                              </div>
                                             </div>
-                                        </div>
+                                          </div>
                                     </div>
-
+                                    
                                     <!-- /Invoice -->
                                     <div>
                                     </div>
-                                    
                                 </div>
-
-
                             </div>
                         </div>
                     </section>
+
+                    @if ($status->status==1 && $jabatan->jabatan==4 && $divisi->divisi==3) 
                     <div class="row invoice-preview">
                     <div class="col-xl-12 col-md-8 col-12">
                         <div class="card invoice-preview-card">
                             <div class="card-body invoice-padding pb-0">
-                    <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
-                    <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
-                        <form method="POST" action="/project/lihat/ {{  $project->id }}" >
-                            @csrf
-                            @method('put')
-                            
-                        <button class="btn btn-success btn-lg py-1 px-3 mx-2 " >
-                        <input type="hidden" name="status" id="status" value= 1 />
-                        <input type="hidden" name="jabatan" id="jabatan" value= 4 />
-                         Setuju </button> 
-                        </form>
-                   
-                        <form method="POST" action="/project/lihat/ {{  $project->id }}" >
-                            @csrf
-                            @method('put')
-                        <button class="btn btn-danger btn-lg py-1 px-3 mx-2" >
-                        <input type="hidden" name="status" id="status" value= 2 />
-                        <input type="hidden" name="jabatan" id="jabatan" value= 4 />
-                         Tolak
-                        </button> 
-                        </form>
-                </div>
-                </div>
+                                <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
+                                <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
+                                    <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" >
+                                        @csrf
+                                        @method('put')
+                                        
+                                    <button class="btn btn-success btn-lg py-1 px-3 mx-2 " >
+                                    <input type="hidden" name="status" id="status" value= 1 />
+                                    <input type="hidden" name="jabatan" id="jabatan" value=3 />
+                                    <input type="hidden" name="divisi" id="divisi" value= 3 />
+                                     Setuju </button> 
+                                    </form>
+                               
+                                    <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" >
+                                        @csrf
+                                        @method('put')
+                                    <button class="btn btn-danger btn-lg py-1 px-3 mx-2" >
+                                    <input type="hidden" name="status" id="status" value= 2 />
+                                    <input type="hidden" name="jabatan" id="jabatan" value= 3 />
+                                    <input type="hidden" name="divisi" id="divisi" value= 3 />
+                                     Tolak
+                                    </button> 
+                                    </form>
+                            </div>
+                        
                 </div>
                 </div>
                 </div>
                 </div>
 
+                @endif
+                </div>
+                
             </div>
-
+            
         </div>
+          
 
 
-
-
-
-
+       
+        
+        
 
         <!-- END: Content-->
     </body>

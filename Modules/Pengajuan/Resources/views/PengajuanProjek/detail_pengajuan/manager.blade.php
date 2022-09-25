@@ -119,6 +119,35 @@
                                             <tbody>
                                                 @if (!empty($pendapatans))
                                                     @foreach ($pendapatans as $pendapatan)
+                                                    @php
+                                                
+                                                    $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+                                                        ->where('project_id', $project->id)
+                                                        ->orderby('created_at', 'desc')
+                                                        ->get()
+                                                        ->first();
+                                                    
+                                                    $projek = Modules\Project\Entities\Project::select()
+                                                        ->where('id', $histori->project_id)
+                                                        ->get()
+                                                        ->first();
+                                                    $user = App\Models\User::select()
+                                                        ->where('id', $projek->user_id)
+                                                        ->get()
+                                                        ->first();
+                                                    $divisi = Modules\Pengajuan\Entities\Divisi::select()
+                                                        ->where('divisi', $projek->divisi)
+                                                        ->get()
+                                                        ->first();
+                                                    $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+                                                        ->where('status', $histori->status)
+                                                        ->get()
+                                                        ->first();
+                                                    $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                                        ->where('jabatan', $histori->jabatan)
+                                                        ->get()
+                                                        ->first();
+                                                @endphp
                                                         {{-- @php
                                        $project = Modules\Pengajuan\Entities\Project::select()
                                                 ->where('id', $biaya->id)
@@ -181,10 +210,11 @@
                                                 data-sort="white sample">
                                                 <p style="text-align:center">Diajukan Oleh :</p>
                                                 <div class="visible-print text-center">
-                                                    {!! QrCode::size(100)->generate(Request::url()) !!}
-
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project "); !!}
+                                              
                                                 </div>
-                                                <p style="text-align:center;">Marcella</p>
+                                                <br>
+                                                <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                             </div>
 
                                             <div class="filtr-item col-sm-2 py-1">
@@ -245,28 +275,32 @@
                             </div>
                         </div>
                     </section>
+                    @if ($status->status==4)
+                  
                     <div class="row invoice-preview">
                     <div class="col-xl-12 col-md-8 col-12">
                         <div class="card invoice-preview-card">
                             <div class="card-body invoice-padding pb-0">
                     <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
                     <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
-                        <form method="POST" action="/project/lihat/ {{  $project->id }}" >
+                        <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" >
                             @csrf
                             @method('put')
                             
                         <button class="btn btn-success btn-lg py-1 px-3 mx-2 " >
                         <input type="hidden" name="status" id="status" value= 1 />
                         <input type="hidden" name="jabatan" id="jabatan" value= 4 />
+                        <input type="hidden" name="divisi" id="divisi" value= 3 />
                          Setuju </button> 
                         </form>
                    
-                        <form method="POST" action="/project/lihat/ {{  $project->id }}" >
+                        <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" >
                             @csrf
                             @method('put')
                         <button class="btn btn-danger btn-lg py-1 px-3 mx-2" >
                         <input type="hidden" name="status" id="status" value= 2 />
                         <input type="hidden" name="jabatan" id="jabatan" value= 4 />
+                        <input type="hidden" name="divisi" id="divisi" value= 3 />
                          Tolak
                         </button> 
                         </form>
@@ -275,6 +309,11 @@
                 </div>
                 </div>
                 </div>
+                @endif
+
+
+
+
                 </div>
 
             </div>

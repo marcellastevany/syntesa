@@ -13,11 +13,11 @@
                     <div class="content-header-left col-md-9 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-start mb-0">Data Project</h2>
+                                <h2 class="content-header-title float-start mb-0">Pengajuan Diproses</h2>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">Pengajuan Project</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Pengajuan Masuk
+                                    <li class="breadcrumb-item active">Pengajuan Diproses
                                     </li>
                                 </ol>
                             </div>
@@ -79,7 +79,7 @@
                                                 ->get()
                                                 ->first();
                                             @endphp
-                                            @if ($histori->status==1 && $jabatan->jabatan==4 && $divisi->divisi==3)
+                                            @if ($histori->status==2 && $jabatan->jabatan==3 || $histori->status==2 && $jabatan->jabatan==1  || $histori->status==2 && $jabatan->jabatan==2 || $histori->status==2 && $jabatan->jabatan==4 && $divisi->divisi==1 )
                                            
                                                 <tr>
                                                     <td> </td>
@@ -114,7 +114,7 @@
                                                             <span class="badge rounded-pill badge-light-info">Normal</span>
                                                         @endif
                                                         <td><span
-                                                            class="badge rounded-pill badge-light-warning">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span></td>
+                                                            class="badge rounded-pill badge-light-primary">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span></td>
                                                     </td>
                                                     <td>
                                                         @php
@@ -142,7 +142,7 @@
                                                                     data-feather="eye"></span></a>
                                                         @endif
 
-                                                        <a href="/pengajuan/detailproject/{{ $project->id }}"
+                                                        <a href="/project/lihat/{{ $project->id }}"
                                                             class="btn btn-icon btn-primary" title="Detail"><span
                                                                 data-feather="book-open"></span></a>
                                                        

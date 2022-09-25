@@ -30,6 +30,21 @@ class MasukProjectController extends Controller
                 'role' => $role->role_id,
                 'projects' => Project::all(),
             ]);}
+            if ($role->divisi_id==1 && $role->jabatan_id==4) {
+                return view('pengajuan::PengajuanProjek.projek_masuk.mankeu', [
+                    'role' => $role->role_id,
+                    'projects' => Project::all(),
+                ]);}
+                if ($role->divisi_id==4 && $role->jabatan_id==2) {
+                    return view('pengajuan::PengajuanProjek.projek_masuk.dirkeu', [
+                        'role' => $role->role_id,
+                        'projects' => Project::all(),
+                    ]);}
+                    if ($role->divisi_id==4 && $role->jabatan_id==1) {
+                        return view('pengajuan::PengajuanProjek.projek_masuk.dirut', [
+                            'role' => $role->role_id,
+                            'projects' => Project::all(),
+                        ]);}
     }
 
     /**

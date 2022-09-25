@@ -98,6 +98,7 @@ class PengajuanController extends Controller
             'project_id' => $id,
             'jabatan'=> $request->jabatan, 
             'status'=> $request->status,
+            'divisi' => $request->divisi,
     
         ]);
       

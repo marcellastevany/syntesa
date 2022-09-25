@@ -181,10 +181,11 @@ data-menu="vertical-menu-modern" data-col="">
                                                 data-sort="white sample">
                                                 <p style="text-align:center">Diajukan Oleh :</p>
                                                 <div class="visible-print text-center">
-                                                    {!! QrCode::size(100)->generate(Request::url()); !!}
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project "); !!}
                                                  
                                                 </div>
-                                                <p style="text-align:center;">Marcella</p>
+                                                <br>
+                                                <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                             </div>
 
                                             <div class="filtr-item col-sm-2 py-1">

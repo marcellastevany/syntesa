@@ -672,7 +672,7 @@
 
                                  <!-- Transaction Card -->
                                 <div class="mt-2 col-lg-4 col-md-6">
-                                    <div class="card card-transaction">
+                                    <div class="card card-transaction  text-center">
                                         <div class="card-header">
                                             <h4 class="card-title">Pengajuan Biasa
                                             </h4>
@@ -782,124 +782,12 @@
                                   
                                     </div>
 
-                                      <!-- Transaction Card -->
-                                <div class="mt-2 col-lg-4 col-md-6">
-                                    <div class="card card-transaction">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Pengajuan Dinas
-                                            </h4>
-
-                                        </div>
-
-                                <div class="card-body">
-
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div
-                                                class="avatar bg-light-primary ">
-                                                <div class="avatar-content">
-                                                    <i data-feather="arrow-down"
-                                                        class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="transaction-percentage">
-                                                <h6 class="transaction-title">
-                                                    Masuk</h6>
-
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder ">
-                                            14</div>
-                                    </div>
-
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div
-                                                class="avatar bg-light-warning ">
-                                                <div class="avatar-content">
-                                                    <i data-feather="activity"
-                                                        class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">
-                                                    Di Proses</h6>
-
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder">5
-                                        </div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div
-                                                class="avatar bg-light-danger ">
-                                                <div class="avatar-content">
-                                                    <i data-feather="x"
-                                                        class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">
-                                                    Di Tolak</h6>
-
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder ">
-                                            12</div>
-                                    </div>
-                                   
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div
-                                                class="avatar bg-light-warning ">
-                                                <div class="avatar-content">
-                                                    <i data-feather="alert-triangle"
-                                                        class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="transaction-percentage">
-                                                <h6 class="transaction-title">
-                                                    Revisi</h6>
-
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder ">
-                                            13</div>
-                                    </div>
-
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div
-                                                class="avatar bg-light-success ">
-                                                <div class="avatar-content">
-                                                    <i data-feather="check"
-                                                        class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="transaction-percentage">
-                                                <h6 class="transaction-title">
-                                                    Selesai</h6>
-
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder ">
-                                            40</div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                 
-                                    </div>
-                                    
-
+                             
                             <!-- Transaction Card -->
                                 <div class="mt-2 col-lg-4 col-md-6">
-                                    <div class="card card-transaction">
+                                    <div class="card card-transaction  text-center">
                                         <div class="card-header">
-                                            <h4 class="card-title">Pengajuan Projek
+                                            <h4 class="card-title">Pengajuan Project
                                             </h4>
 
                                         </div>
@@ -1016,79 +904,7 @@
 
 
 
-                                <!-- Basic table -->
-                                <div
-                                    class="col-12">
-                                    <h2
-                                        class="content-header-title mt-2">
-                                        Pengajuan
-                                        Tidak
-                                        Lengkap
-                                    </h2>
-                                </div>
-                                <section
-                                    id="basic-datatable">
-                                    <div
-                                        class="row">
-                                        <div
-                                            class="col-12 mt-2">
-                                            <div
-                                                class="card">
-
-                                                <table
-                                                    class="datatables-basic table">
-                                                    <thead>
-                                                        <tr>
-
-                                                            <th>
-                                                            </th>
-                                                            <th>Keterangan
-                                                            </th>
-                                                            <th>No
-                                                                Projek
-                                                            </th>
-                                                            <th>Yang
-                                                                Mengajukan
-                                                            </th>
-                                                            <th>Tanggal
-                                                                Pengajuan
-                                                            </th>
-                                                            <th>Yang
-                                                                Mengajukan
-                                                            </th>
-                                                            <th>Kekurangan
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-
-                                                            <td>
-                                                            </td>
-                                                            <td>Biaya
-                                                                Pulsa
-                                                            </td>
-                                                            <td>1123
-                                                            </td>
-                                                            <td>Marcella
-                                                            </td>
-                                                            <td>22
-                                                                Juli
-                                                                2022
-                                                            </td>
-                                                            <td>Staff
-                                                                operasional
-                                                            </td>
-                                                            <td>file
-                                                                lampiran
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                       
 
 @elseif ($role == 1)
  <!-- BEGIN: Content-->

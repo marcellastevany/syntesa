@@ -1,19 +1,21 @@
 <?php
 
 
-use Modules\Pengajuan\Http\Controllers\PengajuanBiasaController;
-use Modules\Pengajuan\Http\Controllers\DetailPengajuanController;
-use Modules\Pengajuan\Http\Controllers\HistoriBiasaController;
 use Modules\Pengajuan\Http\Controllers\DitolakController;
-use Modules\Pengajuan\Http\Controllers\DiprosesController;
-use Modules\Pengajuan\Http\Controllers\MasukBiasaController;
-use Modules\Pengajuan\Http\Controllers\PencairanController;
-use Modules\Pengajuan\Http\Controllers\PengajuanProjekController;
 use Modules\Pengajuan\Http\Controllers\SelesaiController;
-use Modules\Pengajuan\Http\Controllers\SelesaiProjectController;
-use Modules\Pengajuan\Http\Controllers\TolakProjectController;
+use Modules\Pengajuan\Http\Controllers\DiprosesController;
+use Modules\Pengajuan\Http\Controllers\PencairanController;
+use Modules\Pengajuan\Http\Controllers\MasukBiasaController;
+use Modules\Pengajuan\Http\Controllers\HistoriBiasaController;
 use Modules\Pengajuan\Http\Controllers\MasukProjectController;
+use Modules\Pengajuan\Http\Controllers\TolakProjectController;
+use Modules\Pengajuan\Http\Controllers\DetailProjectController;
 use Modules\Pengajuan\Http\Controllers\ProsesProjectController;
+use Modules\Pengajuan\Http\Controllers\PengajuanBiasaController;
+use Modules\Pengajuan\Http\Controllers\SelesaiProjectController;
+use Modules\Pengajuan\Http\Controllers\DetailPengajuanController;
+use Modules\Pengajuan\Http\Controllers\PengajuanProjekController;
+use Modules\Pengajuan\Http\Controllers\PencairanProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,4 +41,6 @@ Route::prefix('pengajuan')->group(function () {
     Route::resource('/projek_tolak', TolakProjectController::class);
     Route::resource('/projek_selesai', SelesaiProjectController::class);
     Route::resource('/projek_masuk', MasukProjectController::class);
+    Route::resource('/detailproject', DetailProjectController::class);
+    Route::resource('/cairproject', PencairanProjectController::class);
 });

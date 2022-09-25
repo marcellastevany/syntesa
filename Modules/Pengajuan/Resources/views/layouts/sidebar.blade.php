@@ -223,11 +223,11 @@
 
 
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
+                            href="#"><i data-feather="circle"></i><span
                                 class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
                         <ul class="menu-content">
                             <li class=" nav-item"><a class="d-flex align-items-center"
-                                    href="/pengajuan/projek_masuk"><i data-feather="circle"></i><span
+                                    href="/pengajuan/projek_masuk/"><i data-feather="circle"></i><span
                                         class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                         Masuk</span></a>
                             </li>
@@ -325,7 +325,7 @@
 
 
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                        href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
+                        href="#"><i data-feather="circle"></i><span
                             class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
                     <ul class="menu-content">
                         <li class=" nav-item"><a class="d-flex align-items-center"
@@ -419,10 +419,12 @@
 
 
                     </ul>
-
+                    <li class=" navigation-header"><span data-i18n="Apps &amp; Pages"> PENCAIRAN </span><i
+                        data-feather="more-horizontal"></i>
+                </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
                             data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="pencairan">
-                            Pencairan </span></a>
+                            Pengajuan Biasa</span></a>
                     <ul class="menu-content">
                         <li class=" nav-item"><a class="d-flex align-items-center"
                                 href="/pengajuan/pencairan/create"><i data-feather="circle"></i><span
@@ -438,7 +440,23 @@
                     </ul>
                 </li>
 
+                <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
+                    data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="pencairan">
+                    Pengajuan Project</span></a>
+            <ul class="menu-content">
+                <li class=" nav-item"><a class="d-flex align-items-center"
+                        href="/pengajuan/cairproject/show"><i data-feather="circle"></i><span
+                            class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan Masuk
+                        </span></a>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/cairproject"><i
+                            data-feather="circle"></i><span class="menu-item text-truncate"
+                            data-i18n="pmasuk">Pengajuan Selesai
+                        </span></a>
+                </li>
 
+            </ul>
+        </li>
         </div>
     </div>
     <!-- END: Main Menu-->
@@ -502,9 +520,33 @@
                             </li>
 
 
+
                         </ul>
                     </li>
-
+ <li class=" nav-item"><a class="d-flex align-items-center"
+                            href="#"><i data-feather="circle"></i><span
+                                class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
+                        <ul class="menu-content">
+                            <li class=" nav-item"><a class="d-flex align-items-center"
+                                    href="/pengajuan/projek_masuk/"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
+                                        Masuk</span></a>
+                            </li>
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_proses"><i
+                                        data-feather="circle"></i><span class="menu-item text-truncate"
+                                        data-i18n="pproses">Pengajuan Di
+                                        Proses</span></a>
+                            </li>
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_selesai"><i
+                                        data-feather="circle"></i><span class="menu-item text-truncate"
+                                        data-i18n="pselesai">Pengajuan
+                                        Selesai</span></a>
+                            </li>
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_tolak"><i
+                                        data-feather="circle"></i><span class="menu-item text-truncate"
+                                        data-i18n="ptolak">Pengajuan Di
+                                        Tolak</span></a>
+                            </li>
 
 
 
@@ -553,9 +595,32 @@
                     <li class=" navigation-header"><span data-i18n="Apps &amp; Pages"> Menu Utama
                         </span><i data-feather="more-horizontal"></i>
                     </li>
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                        href="#"><i data-feather="circle"></i><span
+                            class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
+                    <ul class="menu-content">
+                        <li class=" nav-item"><a class="d-flex align-items-center"
+                                href="/pengajuan/projek_masuk/"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
+                                    Masuk</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_proses"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="pproses">Pengajuan Di
+                                    Proses</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_selesai"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="pselesai">Pengajuan
+                                    Selesai</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_tolak"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="ptolak">Pengajuan Di
+                                    Tolak</span></a>
+                        </li>
 
-
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
+                    {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
                                 data-feather="circle"></i><span class="menu-title text-truncate"
                                 data-i18n="surat">Pengajuan Biasa</span></a>
                         <ul class="menu-content">
@@ -582,7 +647,7 @@
 
 
                         </ul>
-                    </li>
+                    </li> --}}
 
 
                 </ul>
@@ -720,6 +785,9 @@
                             </li>
 
 
+                            
+
+
                         </ul>
                     </li>
 
@@ -802,6 +870,34 @@
                     </li>
 
 
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                        href="#"><i data-feather="circle"></i><span
+                            class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
+                    <ul class="menu-content">
+                        <li class=" nav-item"><a class="d-flex align-items-center"
+                                href="/pengajuan/projek_masuk/"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
+                                    Masuk</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_proses"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="pproses">Pengajuan Di
+                                    Proses</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_selesai"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="pselesai">Pengajuan
+                                    Selesai</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_tolak"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="ptolak">Pengajuan Di
+                                    Tolak</span></a>
+                        </li>
+
+
+                </ul>
+                </li>
 
 
 
@@ -881,7 +977,30 @@
                     </li>
 
 
-
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                        href="#"><i data-feather="circle"></i><span
+                            class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
+                    <ul class="menu-content">
+                        <li class=" nav-item"><a class="d-flex align-items-center"
+                                href="/pengajuan/projek_masuk/"><i data-feather="circle"></i><span
+                                    class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
+                                    Masuk</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_proses"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="pproses">Pengajuan Di
+                                    Proses</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_selesai"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="pselesai">Pengajuan
+                                    Selesai</span></a>
+                        </li>
+                        <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/projek_tolak"><i
+                                    data-feather="circle"></i><span class="menu-item text-truncate"
+                                    data-i18n="ptolak">Pengajuan Di
+                                    Tolak</span></a>
+                        </li>
 
 
                 </ul>

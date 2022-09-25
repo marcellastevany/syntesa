@@ -2,9 +2,12 @@
 
 namespace Modules\Pengajuan\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Modules\Pengajuan\Entities\Role;
+use Modules\Project\Entities\Project;
+use Illuminate\Contracts\Support\Renderable;
 
 class TolakProjectController extends Controller
 {
@@ -14,8 +17,38 @@ class TolakProjectController extends Controller
      */
     public function index()
     {
-        return view('pengajuan::index');
+        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+
+        if ($role->divisi_id==3 && $role->jabatan_id==4) {
+            return view('pengajuan::PengajuanProjek.projek_proses.manager', [
+                'role' => $role->role_id,
+                'projects' => Project::all(),
+            ]);}
+    
+            if ($role->divisi_id==3 && $role->jabatan_id==3) {
+                return view('pengajuan::PengajuanProjek.projek_proses.dirop', [
+                    'role' => $role->role_id,
+                    'projects' => Project::all(),
+                ]);}
+                if ($role->divisi_id==1 && $role->jabatan_id==4) {
+                    return view('pengajuan::PengajuanProjek.projek_proses.mankeu', [
+                        'role' => $role->role_id,
+                        'projects' => Project::all(),
+                    ]);}
+                    if ($role->divisi_id==4 && $role->jabatan_id==2) {
+                        return view('pengajuan::PengajuanProjek.projek_proses.dirkeu', [
+                            'role' => $role->role_id,
+                            'projects' => Project::all(),
+                        ]);}
+                        if ($role->divisi_id==4 && $role->jabatan_id==1) {
+                            return view('pengajuan::PengajuanProjek.projek_proses.dirut', [
+                                'role' => $role->role_id,
+                                'projects' => Project::all(),
+                            ]);}
+        
+
     }
+
 
     /**
      * Show the form for creating a new resource.

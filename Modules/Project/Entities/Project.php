@@ -43,7 +43,10 @@ class Project extends Model
     {
         return $this->hasMany(User::class );
     }
-
+    public function cair_project()
+    {
+        return $this->belongsTo(PencairanProject::class);
+    }
    
     }
  

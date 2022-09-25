@@ -84,12 +84,12 @@ class PengajuanBiasaController extends Controller
             // $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
             HistoriPengajuanBiasa::create([
             'pengajuan_biasa_id' => $id,
-            'user_id' => auth::user()->id,
+            // 'user_id' => auth::user()->id,
             // 'divisi_id' => $role->divisi_id,
-            'keterangan' => $request->keterangan,
+            // 'keterangan' => $request->keterangan,
             'jabatan' => $request->jabatan,
             'status' => $request->status,
-            'catatan' => $request->catatan, 
+            // 'catatan' => $request->catatan, 
             ]);
         }
        

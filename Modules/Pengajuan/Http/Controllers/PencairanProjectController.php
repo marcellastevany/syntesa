@@ -2,23 +2,31 @@
 
 namespace Modules\Pengajuan\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Pengajuan\Entities\Role;
+use Modules\Project\Entities\Project;
+use Illuminate\Contracts\Support\Renderable;
 
-class PengajuanMasukController extends Controller
+class PencairanProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
-    {
-        $role = Role::select()->where('role_id',3)->where('user_id',Auth::user()->id)->get()->first();
-        if($role->divisi_id==1);
-    }
+    
+        {
+            $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+                
+                return view('pengajuan::PengajuanProjek.pencairan.selesai', [
+                'role' => $role->role_id,
+                'projects'=> Project::all(),
+             
+                ]); 
+        }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +34,13 @@ class PengajuanMasukController extends Controller
      */
     public function create()
     {
-        return view('pengajuan::create');
+        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+    
+        return view('pengajuan::PengajuanProjek.pencairan.detailcair', [
+        'role' => $role->role_id,
+        'projects' => Project::all(),
+        
+        ]); 
     }
 
     /**
@@ -46,7 +60,14 @@ class PengajuanMasukController extends Controller
      */
     public function show($id)
     {
-        return view('pengajuan::show');
+        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+    
+        return view('pengajuan::PengajuanProjek.pencairan.masuk', [
+        'role' => $role->role_id,
+        'projects' => Project::all(),
+        
+        ]); 
+
     }
 
     /**

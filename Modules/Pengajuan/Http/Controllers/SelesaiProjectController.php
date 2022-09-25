@@ -14,7 +14,7 @@ class SelesaiProjectController extends Controller
      */
     public function index()
     {
-        return view('pengajuan::index');
+        return view('pengajuan::pengajuanprojek.projek_selesai.index');
     }
 
     /**

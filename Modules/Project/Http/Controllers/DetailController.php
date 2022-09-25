@@ -58,7 +58,7 @@ class DetailController extends Controller
      */
     public function show($id)
     {
-        $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
+        // $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
         $biaya = Biaya::select()->where('project_id',  $id)->get();
         $pendapatan = Pendapatan::select()->where('project_id',  $id)->get();
         $project = Project::where('id',  $id)->get(); 
@@ -68,13 +68,13 @@ class DetailController extends Controller
         $persentase = ($laba / $jumlah_biaya)*(100);
         
      
-        if ($role->divisi_id==3 && $role->jabatan_id==7) {
+        // if ($role->divisi_id==3 && $role->jabatan_id==7) {
          
         // return $lampiran;
 
         return view('project::pengajuan.lihat', [
             // 'projects' =>  Project::all(),
-            'role' => $role->role_id,
+            // 'role' => $role->role_id,
             'projects' =>  $project,
             'biayas' =>  $biaya,
             'pendapatans' =>  $pendapatan,
@@ -84,41 +84,8 @@ class DetailController extends Controller
             'persentase' => $persentase,
             
         ]);
-    }
-    if ($role->divisi_id==3 && $role->jabatan_id==4) {
-         
-        // return $lampiran;
-
-        return view('project::pengajuan.detailmanager', [
-            // 'projects' =>  Project::all(),
-            'role' => $role->role_id,
-            'projects' =>  $project,
-            'biayas' =>  $biaya,
-            'pendapatans' =>  $pendapatan,
-            'jumlah_biaya' =>  $jumlah_biaya,
-            'jumlah_pendapatan' =>  $jumlah_pendapatan,
-            'laba' => $laba,
-            'persentase' => $persentase,
-            
-        ]);
-    }
-    if ($role->divisi_id==3 && $role->jabatan_id==3) {
-         
-        // return $lampiran;
-
-        return view('project::pengajuan.detaildirop', [
-            // 'projects' =>  Project::all(),
-            'role' => $role->role_id,
-            'projects' =>  $project,
-            'biayas' =>  $biaya,
-            'pendapatans' =>  $pendapatan,
-            'jumlah_biaya' =>  $jumlah_biaya,
-            'jumlah_pendapatan' =>  $jumlah_pendapatan,
-            'laba' => $laba,
-            'persentase' => $persentase,
-            
-        ]);
-    }
+    // }
+   
     }
 
     /**

@@ -13,15 +13,13 @@
                     <div class="content-header-left col-md-9 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-start mb-0">Project Masuk</h2>
-                                <div class="breadcrumb-wrapper">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item">Pengajuan Project</a>
-                                        </li>
-                                        <li class="breadcrumb-item active">Pengajuan Masuk
-                                        </li>
-                                    </ol>
-                                </div>
+                                <h2 class="content-header-title float-start mb-0">Project Diproses</h2>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">Pengajuan Project</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">Pengajuan Diproses
+                                    </li>
+                                </ol>
                             </div>
                         </div>
                     </div>
@@ -81,7 +79,7 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                            @if($histori->status==3)
+                                            @if ($histori->status == 1 && $jabatan->jabatan == 1)
                                                 <tr>
                                                     <td> </td>
 
@@ -115,7 +113,7 @@
                                                             <span class="badge rounded-pill badge-light-info">Normal</span>
                                                         @endif
                                                     <td><span
-                                                            class="badge rounded-pill badge-light-warning">{{ $status->keterangan }}
+                                                            class="badge rounded-pill badge-light-primary">{{ $status->keterangan }}
                                                             {{ $jabatan->keterangan }}</span></td>
                                                     </td>
                                                     <td>

@@ -81,7 +81,7 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                            @if($histori->status==3)
+                                            @if($histori->status==1 && $histori->jabatan==4 && $histori->divisi==1)
                                                 <tr>
                                                     <td> </td>
 
@@ -115,8 +115,8 @@
                                                             <span class="badge rounded-pill badge-light-info">Normal</span>
                                                         @endif
                                                     <td><span
-                                                            class="badge rounded-pill badge-light-warning">{{ $status->keterangan }}
-                                                            {{ $jabatan->keterangan }}</span></td>
+                                                            class="badge rounded-pill badge-light-warning">{{ $status->keterangan }} 
+                                                            {{ $jabatan->keterangan }} Keuangan</span></td>
                                                     </td>
                                                     <td>
                                                         @php

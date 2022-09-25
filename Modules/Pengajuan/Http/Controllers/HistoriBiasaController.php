@@ -57,7 +57,7 @@ class HistoriBiasaController extends Controller
             'keterangan' => $request->keterangan,
             'jabatan' => $request->jabatan,
             'status' => $request->status,
-            'catatan' => $request->catatan, 
+            // 'catatan' => $request->catatan, 
         ]);
 
         
@@ -198,7 +198,7 @@ class HistoriBiasaController extends Controller
 
         HistoriPengajuanBiasa::create([
             'pengajuan_biasa_id' => $id,
-            'user_id' => auth::user()->id,
+            // 'user_id' => auth::user()->id,
             'jabatan' => $request->jabatan,
             'status' => $request->status,
         ]);  
