@@ -198,7 +198,7 @@
                                             <div class="card-footer">
                                                 <button type="hidden" value="Normal" name="keterangan"
                                                     class="btn btn-success"
-                                                    onclick="return confirm ('Apakah anda yakin?')">Ajukan Project</button>
+                                                    onclick="return confirm ('Apakah anda yakin?')"> Ajukan Project </button>
                                             </div>
 
                                     </form>

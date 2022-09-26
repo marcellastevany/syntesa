@@ -206,8 +206,7 @@
                                     <!-- /.row -->
                                     <div>
                                         <div class="filter-container p-0 row">
-                                            <div class="filtr-item col-sm-2 py-1" data-category="1"
-                                                data-sort="white sample">
+                                            <div class="filtr-item col-sm-2 py-1">
                                                 <p style="text-align:center">Diajukan Oleh :</p>
                                                 <div class="visible-print text-center">
                                                     {!! QrCode::size(100)->generate("Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project "); !!}
@@ -219,7 +218,9 @@
 
                                             <div class="filtr-item col-sm-2 py-1">
                                                 <p style="text-align:center">Disetujui Oleh :</p>
-                                                <p style="text-align:center;">Marcella</p>
+
+                                                
+                                                <p style="text-align:center;"></p>
                                             </div>
                                         </div>
 

@@ -79,6 +79,7 @@
 
 
                                                     </td>
+                                                    
                                                     <td>
                                                         @php
                                                             $lihat = Modules\Project\Entities\Lampiran::select()->where('project_id', $project->id);
@@ -91,11 +92,13 @@
                                                         @if ($countLihat > 0)
                                                             <a href="/project/pengajuan/"{{ $project->id }}
                                                                 class="btn btn-icon 
-                                                                @if ($lampiranKosong > 0) btn-danger
+                                                                @if ($lampiranKosong > 0)
+                                                                 btn-danger
                                                                 @else
-                                                                    btn-info @endif
+                                                                    btn-info 
+                                                                    @endif
                                                                 "
-                                                                title="Lampiran"data-bs-toggle="modal"
+                                                                title="Lampiran" data-bs-toggle="modal"
                                                                 data-bs-target="#lampiran_{{ $project->id }}"><span
                                                                     data-feather="eye"></span></a>
                                                         @else

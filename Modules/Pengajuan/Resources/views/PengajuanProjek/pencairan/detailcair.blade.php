@@ -275,12 +275,16 @@
                             </div>
                         </div>
                     </section>
+                    <div class="row invoice-preview">
+                        <div class="col-xl-12 col-md-8 col-12">
+                            <div class="card invoice-preview-card">
+                                <div class="card-body invoice-padding pb-0">
                     @if ($status->status==1)
                     <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" enctype="multipart/form-data" >
                     @csrf
                     @method('put') 
                     
-                    <h3 class="mb-75 mt-3">Lampiran Pencairan</h3>
+                    <h3 class="mb-75 mt-3 text-center">Lampiran Pencairan</h3>
                     <div class="col-lg-12 col-md-12 mb-1 mb-sm-0  mt-3">
                         <label for="cair_project" class="form-label">Input Lampiran Pencairan Disini</label>
                         <input class="form-control" type="file" id="cair_project" name="cair_project" />
@@ -293,26 +297,38 @@
                             <button type="submit"  class="btn btn-success btn-lg">Cairkan</button>
                         </div>
                     </form>
-        
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row invoice-preview">
+                        <div class="col-xl-12 col-md-8 col-12">
+                            <div class="card invoice-preview-card">
+                                <div class="card-body invoice-padding pb-0">
                     @elseif ($status->status==3)
-                    <h3 class="mb-75 mt-5"> Lampiran Pencairan</h3>
+                   
                      
                     @foreach ($cair_projects as $cair_project)
                     @php
-                       $cair= Modules\Pengajuan\Entities\PencairanProject::select()
+                       $cair= Modules\Pengajuan\Entities\Cair::select()
                                 ->where('id', $cair_project->project_id)
                                 ->get()
                                 ->first();                                                    
                     @endphp
-        
-                    <div class="mt-2">
-                        <h6>
-                            <a type="button" class="btn  btn-primary btn-lg" target="blank" href="{{ asset('storage/' . $cair_project->cair_project) }}">
-                              Lihat Lampiran
-                            </a></h6>
-                    </div>
+                    <div>
+         <h2 class="text-center "> Lampiran Pencairan</h2>
+         <div class="col md-2 mb-1 ml-2 mt-2 d-flex justify-content-center">
+                            <a type="button" class="btn  btn-primary mb-1 col-2 d-flex justify-content-center" target="blank" href="{{ asset('storage/' . $cair_project->cair_project) }}">
+                           
+                                Lihat Lampiran
+                            </a>
+
+                        </div>
                     @endforeach
-                    <hr>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
         
                    
                     @endif

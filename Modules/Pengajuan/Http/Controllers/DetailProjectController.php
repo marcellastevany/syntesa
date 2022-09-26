@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Project\Entities\Biaya;
 use Illuminate\Support\Facades\Auth;
+use Modules\Pengajuan\Entities\Cair;
 use Modules\Pengajuan\Entities\Role;
 use Modules\Project\Entities\Project;
 use Modules\Project\Entities\Pendapatan;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Pengajuan\Entities\PencairanProject;
+use Modules\Pengajuan\Entities\LampiranProject;
 use Modules\Pengajuan\Entities\HistoriPengajuanProjek;
 
 class DetailProjectController extends Controller
@@ -59,6 +61,11 @@ class DetailProjectController extends Controller
             $jumlah_pendapatan = Pendapatan::select()->where('project_id',  $id)->sum('total_pendapatan'); 
             $laba = $jumlah_pendapatan - $jumlah_biaya; 
             $persentase = ($laba / $jumlah_biaya)*(100);
+            $cair_project = Cair::select()->where('project_id',  $id)->get();
+            // $detailp= Project::find($id);
+            // $projectlampiran = Lampiranroject::select()->where('project_id',  $detailp->id)->get();
+            // $project_cair = Cair::select()->where('project_id',  $detailp->id)->get();
+           
             
 
       
@@ -78,6 +85,7 @@ class DetailProjectController extends Controller
                 'jumlah_pendapatan' =>  $jumlah_pendapatan,
                 'laba' => $laba,
                 'persentase' => $persentase,
+                'cair_projects' =>  $cair_project,
                 
             ]);
         }
@@ -95,6 +103,7 @@ class DetailProjectController extends Controller
                 'jumlah_pendapatan' =>  $jumlah_pendapatan,
                 'laba' => $laba,
                 'persentase' => $persentase,
+                'cair_projects' =>  $cair_project,
                 
             ]);
         }
@@ -112,6 +121,7 @@ class DetailProjectController extends Controller
                 'jumlah_pendapatan' =>  $jumlah_pendapatan,
                 'laba' => $laba,
                 'persentase' => $persentase,
+                'cair_projects' =>  $cair_project,
                 
             ]);
         }
@@ -129,6 +139,7 @@ class DetailProjectController extends Controller
                 'jumlah_pendapatan' =>  $jumlah_pendapatan,
                 'laba' => $laba,
                 'persentase' => $persentase,
+                'cair_projects' =>  $cair_project,
                 
             ]);
         }
@@ -146,6 +157,7 @@ class DetailProjectController extends Controller
                 'jumlah_pendapatan' =>  $jumlah_pendapatan,
                 'laba' => $laba,
                 'persentase' => $persentase,
+                'cair_projects' =>  $cair_project,
                 
             ]);
         }
@@ -161,6 +173,10 @@ class DetailProjectController extends Controller
             'jumlah_pendapatan' =>  $jumlah_pendapatan,
             'laba' => $laba,
             'persentase' => $persentase,
+            'cair_projects' =>  $cair_project,
+            // 'detailps' => Project::select()->where('id',$detailp->project_id)->get(),
+            // 'project_lampirans' =>  $projectlampiran,
+            // 'project_cairs' =>  $project_cair,
             
         ]);
     }
@@ -210,23 +226,42 @@ class DetailProjectController extends Controller
 
     public function cair($id)
     {
-        // $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
-        // $biaya = Biaya::select()->where('project_id',  $id)->get();
-        // $pendapatan = Pendapatan::select()->where('project_id',  $id)->get();
-        // $project = Project::where('id',  $id)->get(); 
-        // $jumlah_biaya = Biaya::select()->where('project_id',  $id)->sum('total_biaya'); 
-        // $jumlah_pendapatan = Pendapatan::select()->where('project_id',  $id)->sum('total_pendapatan'); 
-        // $laba = $jumlah_pendapatan - $jumlah_biaya; 
-        // $persentase = ($laba / $jumlah_biaya)*(100);
-
-
-        // if ($role->divisi_id==1 && $role->jabatan_id==7) {
-             
-            // return $lampiran;
-    
-           
-        // }
+        $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
+        $biaya = Biaya::select()->where('project_id',  $id)->get();
+        $pendapatan = Pendapatan::select()->where('project_id',  $id)->get();
+        $project = Project::where('id',  $id)->get(); 
+        $jumlah_biaya = Biaya::select()->where('project_id',  $id)->sum('total_biaya'); 
+        $jumlah_pendapatan = Pendapatan::select()->where('project_id',  $id)->sum('total_pendapatan'); 
+        $laba = $jumlah_pendapatan - $jumlah_biaya; 
+        $persentase = ($laba / $jumlah_biaya)*(100);
+        $cair_project = Cair::select()->where('project_id',  $project->id)->get();
+        // $detailp= Project::find($id);
+        // $projectlampiran = Lampiranroject::select()->where('project_id',  $detailp->id)->get();
+        // $project_cair = Cair::select()->where('project_id',  $detailp->id)->get();
+       
         
+
+  
+    
+      
+    if ($role->divisi_id==1 && $role->jabatan_id==7) {
+         
+        // return $lampiran;
+
+        return view('pengajuan::pengajuanprojek.pencairan.detailcair', [
+            // 'projects' =>  Project::all(),
+            'role' => $role->role_id,
+            'projects' =>  $project,
+            'biayas' =>  $biaya,
+            'pendapatans' =>  $pendapatan,
+            'jumlah_biaya' =>  $jumlah_biaya,
+            'jumlah_pendapatan' =>  $jumlah_pendapatan,
+            'laba' => $laba,
+            'persentase' => $persentase,
+            'cair_projects' => $cair_project,
+            
+        ]);
+    }
 
 
     }
@@ -257,12 +292,12 @@ class DetailProjectController extends Controller
                 if ($request->file ('cair_project')) {
                     $cair;
                     }
-                PencairanProject::create([
+                Cair::create([
                 'project_id' => $id,
                 'cair_project' => $cair,
             ]); 
         }
-            return redirect('/pengajuan/projek_masuk');
+            return redirect('/pengajuan/pengajuanprojek/pencairan/selesai');
             
 
     

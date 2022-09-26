@@ -47,6 +47,10 @@ class Project extends Model
     {
         return $this->belongsTo(PencairanProject::class);
     }
+    // public function project_lampiran()
+    // {
+    //     return $this->belongsTo(LampiranProject::class);
+    // }
    
     }
  

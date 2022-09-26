@@ -4,9 +4,8 @@ namespace Modules\Pengajuan\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Pengajuan\Database\factories\PencairanProjectFactory;
 
-class PencairanProject extends Model
+class Cair extends Model
 {
     use HasFactory;
 
