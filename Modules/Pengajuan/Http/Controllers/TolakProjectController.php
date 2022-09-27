@@ -20,28 +20,28 @@ class TolakProjectController extends Controller
         $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
 
         if ($role->divisi_id==3 && $role->jabatan_id==4) {
-            return view('pengajuan::PengajuanProjek.projek_proses.manager', [
+            return view('pengajuan::PengajuanProjek.projek_tolak.manager', [
                 'role' => $role->role_id,
                 'projects' => Project::all(),
             ]);}
     
             if ($role->divisi_id==3 && $role->jabatan_id==3) {
-                return view('pengajuan::PengajuanProjek.projek_proses.dirop', [
+                return view('pengajuan::PengajuanProjek.projek_tolak.dirop', [
                     'role' => $role->role_id,
                     'projects' => Project::all(),
                 ]);}
                 if ($role->divisi_id==1 && $role->jabatan_id==4) {
-                    return view('pengajuan::PengajuanProjek.projek_proses.mankeu', [
+                    return view('pengajuan::PengajuanProjek.projek_tolak.mankeu', [
                         'role' => $role->role_id,
                         'projects' => Project::all(),
                     ]);}
                     if ($role->divisi_id==4 && $role->jabatan_id==2) {
-                        return view('pengajuan::PengajuanProjek.projek_proses.dirkeu', [
+                        return view('pengajuan::PengajuanProjek.projek_tolak.dirkeu', [
                             'role' => $role->role_id,
                             'projects' => Project::all(),
                         ]);}
                         if ($role->divisi_id==4 && $role->jabatan_id==1) {
-                            return view('pengajuan::PengajuanProjek.projek_proses.dirut', [
+                            return view('pengajuan::PengajuanProjek.projek_tolak.dirut', [
                                 'role' => $role->role_id,
                                 'projects' => Project::all(),
                             ]);}

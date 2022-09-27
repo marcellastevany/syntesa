@@ -75,10 +75,8 @@
                                                         @elseif ($project->status == 'Normal')
                                                             <span class="badge rounded-pill badge-light-info">Normal</span>
                                                         @endif
-
-
-
                                                     </td>
+                                                    
                                                     
                                                     <td>
                                                         @php

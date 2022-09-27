@@ -81,7 +81,7 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                            @if($histori->status==1 && $jabatan->jabatan==2)
+                                            @if($histori->status==1 && $histori->jabatan==2 && $histori->divisi==4)
                                                 <tr>
                                                     <td> </td>
 

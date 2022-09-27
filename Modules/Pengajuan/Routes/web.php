@@ -43,4 +43,5 @@ Route::prefix('pengajuan')->group(function () {
     Route::resource('/projek_masuk', MasukProjectController::class);
     Route::resource('/detailproject', DetailProjectController::class);
     Route::resource('/cairproject', PencairanProjectController::class);
+   
 });

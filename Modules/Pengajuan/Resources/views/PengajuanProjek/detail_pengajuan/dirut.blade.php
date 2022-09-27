@@ -119,35 +119,35 @@
                                             <tbody>
                                                 @if (!empty($pendapatans))
                                                     @foreach ($pendapatans as $pendapatan)
-                                                    @php
-                                                
-                                                    $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
-                                                        ->where('project_id', $project->id)
-                                                        ->orderby('created_at', 'desc')
-                                                        ->get()
-                                                        ->first();
-                                                    
-                                                    $projek = Modules\Project\Entities\Project::select()
-                                                        ->where('id', $histori->project_id)
-                                                        ->get()
-                                                        ->first();
-                                                    $user = App\Models\User::select()
-                                                        ->where('id', $projek->user_id)
-                                                        ->get()
-                                                        ->first();
-                                                    $divisi = Modules\Pengajuan\Entities\Divisi::select()
-                                                        ->where('divisi', $projek->divisi)
-                                                        ->get()
-                                                        ->first();
-                                                    $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
-                                                        ->where('status', $histori->status)
-                                                        ->get()
-                                                        ->first();
-                                                    $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
-                                                        ->where('jabatan', $histori->jabatan)
-                                                        ->get()
-                                                        ->first();
-                                                @endphp
+                                                        @php
+                                                            
+                                                            $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+                                                                ->where('project_id', $project->id)
+                                                                ->orderby('created_at', 'desc')
+                                                                ->get()
+                                                                ->first();
+                                                            
+                                                            $projek = Modules\Project\Entities\Project::select()
+                                                                ->where('id', $histori->project_id)
+                                                                ->get()
+                                                                ->first();
+                                                            $user = App\Models\User::select()
+                                                                ->where('id', $projek->user_id)
+                                                                ->get()
+                                                                ->first();
+                                                            $divisi = Modules\Pengajuan\Entities\Divisi::select()
+                                                                ->where('divisi', $projek->divisi)
+                                                                ->get()
+                                                                ->first();
+                                                            $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+                                                                ->where('status', $histori->status)
+                                                                ->get()
+                                                                ->first();
+                                                            $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                                                ->where('jabatan', $histori->jabatan)
+                                                                ->get()
+                                                                ->first();
+                                                        @endphp
                                                         {{-- @php
                                        $project = Modules\Pengajuan\Entities\Project::select()
                                                 ->where('id', $biaya->id)
@@ -210,8 +210,10 @@
                                                 data-sort="white sample">
                                                 <p style="text-align:center">Diajukan Oleh :</p>
                                                 <div class="visible-print text-center">
-                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project "); !!}
-                                              
+                                                    {!! QrCode::size(100)->generate(
+                                                        "Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project ",
+                                                    ) !!}
+
                                                 </div>
                                                 <br>
                                                 <p style="text-align:center;">{{ $project->pemegang_project }}</p>
@@ -219,7 +221,7 @@
 
                                             <div class="filtr-item col-sm-2 py-1">
                                                 <p style="text-align:center">Disetujui Oleh :</p>
-                                                
+
                                                 <p style="text-align:center;">Marcella</p>
                                             </div>
                                         </div>
@@ -269,67 +271,76 @@
                                     <!-- /Invoice -->
                                     <div>
                                     </div>
-                                    
+
                                 </div>
 
 
                             </div>
                         </div>
                     </section>
-                    @if ($status->status==1 && $jabatan->jabatan==2)
-                  
-                    <div class="row invoice-preview">
-                    <div class="col-xl-12 col-md-8 col-12">
-                        <div class="card invoice-preview-card">
-                            <div class="card-body invoice-padding pb-0">
-                    <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
-                    <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
-                        <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" >
-                            @csrf
-                            @method('put')
-                            
-                        <button class="btn btn-success btn-lg py-1 px-3 mx-2 " >
-                        <input type="hidden" name="status" id="status" value= 1 />
-                        <input type="hidden" name="jabatan" id="jabatan" value= 1 />
-                        <input type="hidden" name="divisi" id="divisi" value= 3 />
-                         Setuju </button> 
-                        </form>
-                   
-                        <form method="POST" action="/pengajuan/detailproject/ {{  $project->id }}" >
-                            @csrf
-                            @method('put')
-                        <button class="btn btn-danger btn-lg py-1 px-3 mx-2" >
-                        <input type="hidden" name="status" id="status" value= 2 />
-                        <input type="hidden" name="jabatan" id="jabatan" value= 1 />
-                        <input type="hidden" name="divisi" id="divisi" value= 3 />
-                         Tolak
-                        </button> 
-                        </form>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                @endif
+                    @if ($status->status == 1 && $jabatan->jabatan == 2 && $divisi->divisi == 4)
+                        <div class="row invoice-preview">
+                            <div class="col-xl-12 col-md-8 col-12">
+                                <div class="card invoice-preview-card">
+                                    <div class="card-body invoice-padding pb-0">
+                                        <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
+                                        <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
+                                            <form method="POST" action="/pengajuan/detailproject/ {{ $project->id }}">
+                                                @csrf
+                                                @method('put')
 
+                                                <button class="btn btn-success btn-lg py-1 px-3 mx-2 ">
+                                                    <input type="hidden" name="status" id="status" value=1 />
+                                                    <input type="hidden" name="jabatan" id="jabatan" value=1 />
+                                                    <input type="hidden" name="divisi" id="divisi" value=4 />
+                                                    Setuju </button>
+                                            </form>
 
-
-
+                                            <form method="POST" action="/pengajuan/detailproject/ {{ $project->id }}">
+                                                @csrf
+                                                @method('put')
+                                                <button class="btn btn-danger btn-lg py-1 px-3 mx-2">
+                                                    <input type="hidden" name="status" id="status" value=2 />
+                                                    <input type="hidden" name="jabatan" id="jabatan" value=1 />
+                                                    <input type="hidden" name="divisi" id="divisi" value=4 />
+                                                    Tolak
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @elseif ($status->status == 3)
+                        <div class="row invoice-preview">
+                            <div class="col-xl-12 col-md-8 col-12">
+                                <div class="card invoice-preview-card">
+                                    <div class="card-body invoice-padding pb-0">
+                                        @foreach ($cair_projects as $cair_project)
+                                            @php
+                                                $cair = Modules\Pengajuan\Entities\Cair::select()
+                                                    ->where('id', $cair_project->project_id)
+                                                    ->get()
+                                                    ->first();
+                                            @endphp
+                                            <div>
+                                                <h2 class="text-center "> Lampiran Pencairan</h2>
+                                                <div class="col md-2 mb-1 ml-2 mt-2 d-flex justify-content-center">
+                                                    <a type="button"
+                                                        class="btn  btn-primary mb-1 col-2 d-flex justify-content-center"
+                                                        target="blank"
+                                                        href="{{ asset('storage/' . $cair_project->cair_project) }}">
+                                                        Lihat Lampiran
+                                                    </a>
+                                                </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-
             </div>
-
         </div>
-
-
-
-
-
-
-
-        <!-- END: Content-->
     </body>
-    {{-- <script type="text/javascript">
-    window.print();
-    </script> --}}
 @endsection

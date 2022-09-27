@@ -2,9 +2,12 @@
 
 namespace Modules\Pengajuan\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Modules\Pengajuan\Entities\Role;
+use Modules\Project\Entities\Project;
+use Illuminate\Contracts\Support\Renderable;
 
 class SelesaiProjectController extends Controller
 {
@@ -14,7 +17,7 @@ class SelesaiProjectController extends Controller
      */
     public function index()
     {
-        return view('pengajuan::pengajuanprojek.projek_selesai.index');
+        return view('pengajuan::index');
     }
 
     /**
@@ -43,7 +46,34 @@ class SelesaiProjectController extends Controller
      */
     public function show($id)
     {
-        return view('pengajuan::show');
+        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+
+        if ($role->divisi_id==3 && $role->jabatan_id==4) {
+            return view('pengajuan::PengajuanProjek.projek_selesai.manager', [
+                'role' => $role->role_id,
+                'projects' => Project::all(),
+            ]);}
+    
+            if ($role->divisi_id==3 && $role->jabatan_id==3) {
+                return view('pengajuan::PengajuanProjek.projek_selesai.dirop', [
+                    'role' => $role->role_id,
+                    'projects' => Project::all(),
+                ]);}
+                if ($role->divisi_id==1 && $role->jabatan_id==4) {
+                    return view('pengajuan::PengajuanProjek.projek_selesai.mankeu', [
+                        'role' => $role->role_id,
+                        'projects' => Project::all(),
+                    ]);}
+                    if ($role->divisi_id==4 && $role->jabatan_id==2) {
+                        return view('pengajuan::PengajuanProjek.projek_selesai.dirkeu', [
+                            'role' => $role->role_id,
+                            'projects' => Project::all(),
+                        ]);}
+                        if ($role->divisi_id==4 && $role->jabatan_id==1) {
+                            return view('pengajuan::PengajuanProjek.projek_selesai.dirut', [
+                                'role' => $role->role_id,
+                                'projects' => Project::all(),
+                            ]);}
     }
 
     /**

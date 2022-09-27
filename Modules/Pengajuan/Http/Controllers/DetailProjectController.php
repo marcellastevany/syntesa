@@ -296,8 +296,10 @@ class DetailProjectController extends Controller
                 'project_id' => $id,
                 'cair_project' => $cair,
             ]); 
-        }
+      
             return redirect('/pengajuan/pengajuanprojek/pencairan/selesai');
+        }
+            return redirect('/pengajuan/pengajuanprojek/projek_masuk');
             
 
     

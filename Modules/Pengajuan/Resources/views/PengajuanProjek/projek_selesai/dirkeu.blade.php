@@ -81,7 +81,7 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                            @if($histori->status==3)
+                                            @if ($histori->status == 3)
                                                 <tr>
                                                     <td> </td>
 

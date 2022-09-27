@@ -79,8 +79,7 @@
                                                 ->get()
                                                 ->first();
                                             @endphp
-                                            @if ($histori->status==2 && $jabatan->jabatan==3 || $histori->status==2 && $jabatan->jabatan==1  || $histori->status==2 && $jabatan->jabatan==2 || $histori->status==2 && $jabatan->jabatan==4 && $divisi->divisi==1 )
-                                           
+                                            @if ($status->status==2 )
                                                 <tr>
                                                     <td> </td>
                                                 
@@ -142,7 +141,7 @@
                                                                     data-feather="eye"></span></a>
                                                         @endif
 
-                                                        <a href="/project/lihat/{{ $project->id }}"
+                                                        <a href="/project/detailproject/{{ $project->id }}"
                                                             class="btn btn-icon btn-primary" title="Detail"><span
                                                                 data-feather="book-open"></span></a>
                                                        

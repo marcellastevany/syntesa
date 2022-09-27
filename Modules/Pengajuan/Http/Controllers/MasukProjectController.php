@@ -17,34 +17,7 @@ class MasukProjectController extends Controller
      */
     public function index()
     {
-        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
-
-        if ($role->divisi_id==3 && $role->jabatan_id==4) {
-        return view('pengajuan::PengajuanProjek.projek_masuk.manager', [
-            'role' => $role->role_id,
-            'projects' => Project::all(),
-        ]);}
-
-        if ($role->divisi_id==3 && $role->jabatan_id==3) {
-            return view('pengajuan::PengajuanProjek.projek_masuk.dirop', [
-                'role' => $role->role_id,
-                'projects' => Project::all(),
-            ]);}
-            if ($role->divisi_id==1 && $role->jabatan_id==4) {
-                return view('pengajuan::PengajuanProjek.projek_masuk.mankeu', [
-                    'role' => $role->role_id,
-                    'projects' => Project::all(),
-                ]);}
-                if ($role->divisi_id==4 && $role->jabatan_id==2) {
-                    return view('pengajuan::PengajuanProjek.projek_masuk.dirkeu', [
-                        'role' => $role->role_id,
-                        'projects' => Project::all(),
-                    ]);}
-                    if ($role->divisi_id==4 && $role->jabatan_id==1) {
-                        return view('pengajuan::PengajuanProjek.projek_masuk.dirut', [
-                            'role' => $role->role_id,
-                            'projects' => Project::all(),
-                        ]);}
+        return view('pengajuan::index');
     }
 
     /**
@@ -73,7 +46,35 @@ class MasukProjectController extends Controller
      */
     public function show($id)
     {
-        return view('pengajuan::show');
+       
+        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+
+        if ($role->divisi_id==3 && $role->jabatan_id==4) {
+        return view('pengajuan::PengajuanProjek.projek_masuk.manager', [
+            'role' => $role->role_id,
+            'projects' => Project::all(),
+        ]);}
+
+        if ($role->divisi_id==3 && $role->jabatan_id==3) {
+            return view('pengajuan::PengajuanProjek.projek_masuk.dirop', [
+                'role' => $role->role_id,
+                'projects' => Project::all(),
+            ]);}
+            if ($role->divisi_id==1 && $role->jabatan_id==4) {
+                return view('pengajuan::PengajuanProjek.projek_masuk.mankeu', [
+                    'role' => $role->role_id,
+                    'projects' => Project::all(),
+                ]);}
+                if ($role->divisi_id==4 && $role->jabatan_id==2) {
+                    return view('pengajuan::PengajuanProjek.projek_masuk.dirkeu', [
+                        'role' => $role->role_id,
+                        'projects' => Project::all(),
+                    ]);}
+                    if ($role->divisi_id==4 && $role->jabatan_id==1) {
+                        return view('pengajuan::PengajuanProjek.projek_masuk.dirut', [
+                            'role' => $role->role_id,
+                            'projects' => Project::all(),
+                        ]);}
     }
 
     /**

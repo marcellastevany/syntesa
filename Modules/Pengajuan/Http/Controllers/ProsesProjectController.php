@@ -17,35 +17,8 @@ class ProsesProjectController extends Controller
      */
     public function index()
     {
-        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
-
-        if ($role->divisi_id==3 && $role->jabatan_id==4) {
-            return view('pengajuan::PengajuanProjek.projek_proses.manager', [
-                'role' => $role->role_id,
-                'projects' => Project::all(),
-            ]);}
-    
-            if ($role->divisi_id==3 && $role->jabatan_id==3) {
-                return view('pengajuan::PengajuanProjek.projek_proses.dirop', [
-                    'role' => $role->role_id,
-                    'projects' => Project::all(),
-                ]);}
-                if ($role->divisi_id==1 && $role->jabatan_id==4) {
-                    return view('pengajuan::PengajuanProjek.projek_proses.mankeu', [
-                        'role' => $role->role_id,
-                        'projects' => Project::all(),
-                    ]);}
-                    if ($role->divisi_id==4 && $role->jabatan_id==2) {
-                        return view('pengajuan::PengajuanProjek.projek_proses.dirkeu', [
-                            'role' => $role->role_id,
-                            'projects' => Project::all(),
-                        ]);}
-                        if ($role->divisi_id==4 && $role->jabatan_id==1) {
-                            return view('pengajuan::PengajuanProjek.projek_proses.dirut', [
-                                'role' => $role->role_id,
-                                'projects' => Project::all(),
-                            ]);}
-        
+       
+        return view('pengajuan::index');
 
     }
 
@@ -75,7 +48,34 @@ class ProsesProjectController extends Controller
      */
     public function show($id)
     {
-        return view('pengajuan::show');
+        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
+
+        if ($role->divisi_id==3 && $role->jabatan_id==4) {
+            return view('pengajuan::PengajuanProjek.projek_proses.manager', [
+                'role' => $role->role_id,
+                'projects' => Project::all(),
+            ]);}
+    
+            if ($role->divisi_id==3 && $role->jabatan_id==3) {
+                return view('pengajuan::PengajuanProjek.projek_proses.dirop', [
+                    'role' => $role->role_id,
+                    'projects' => Project::all(),
+                ]);}
+                if ($role->divisi_id==1 && $role->jabatan_id==4) {
+                    return view('pengajuan::PengajuanProjek.projek_proses.mankeu', [
+                        'role' => $role->role_id,
+                        'projects' => Project::all(),
+                    ]);}
+                    if ($role->divisi_id==4 && $role->jabatan_id==2) {
+                        return view('pengajuan::PengajuanProjek.projek_proses.dirkeu', [
+                            'role' => $role->role_id,
+                            'projects' => Project::all(),
+                        ]);}
+                        if ($role->divisi_id==4 && $role->jabatan_id==1) {
+                            return view('pengajuan::PengajuanProjek.projek_proses.dirut', [
+                                'role' => $role->role_id,
+                                'projects' => Project::all(),
+                            ]);}
     }
 
     /**
