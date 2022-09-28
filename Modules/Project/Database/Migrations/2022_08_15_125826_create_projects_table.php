@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('no_project')->nullable();
-            $table->string('pemegang_project')->nullable();
-            $table->string('tgl_project')->nullable();
-            $table->string('nama_project')->nullable();
+            $table->string('no_project');
+            $table->string('pemegang_project');
+            $table->string('tgl_project');
+            $table->string('nama_project');
             $table->string('sales_order')->nullable();
-            $table->string('keterangan')->nullable();
-            $table->text('deskripsi')->nullable();
+            $table->string('keterangan');
+            $table->text('deskripsi');
             // $table->string('lampiran_id')->nullable();
             $table->timestamps();
         });

@@ -17,35 +17,6 @@ class MasukProjectController extends Controller
      */
     public function index()
     {
-        return view('pengajuan::index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('pengajuan::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
        
         $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
 
@@ -75,6 +46,35 @@ class MasukProjectController extends Controller
                             'role' => $role->role_id,
                             'projects' => Project::all(),
                         ]);}
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * @return Renderable
+     */
+    public function create()
+    {
+        return view('pengajuan::create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @param Request $request
+     * @return Renderable
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Show the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function show($id)
+    {
+       
     }
 
     /**

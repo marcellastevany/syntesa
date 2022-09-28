@@ -82,8 +82,8 @@
                                             @if ($histori->status == 1 && $histori->jabatan == 4 && $histori->divisi == 3 ||
                                                  $histori->status == 1 && $histori->jabatan == 3 && $histori->divisi == 3 ||  
                                                  $histori->status == 1 && $histori->jabatan == 4 && $histori->divisi == 1 || 
-                                                 $histori->status == 1 && $histori->jabatan == 2 && $histori->divisi == 4 ||
-                                                 $histori->status == 1 && $histori->jabatan == 1 && $histori->divisi == 4  )
+                                                 $histori->status == 1 && $histori->jabatan == 2 ||
+                                                 $histori->status == 1 && $histori->jabatan == 1  )
                                                 <tr>
                                                     <td> </td>
 

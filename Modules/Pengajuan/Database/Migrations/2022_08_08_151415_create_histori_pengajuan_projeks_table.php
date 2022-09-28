@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('histori_pengajuan_projeks', function (Blueprint $table) {
             $table->id();
-            $table->string('pengajuan_projek_id');
-            $table->string('user_id');
-            $table->text('catatan');
+            $table->string('project_id');
+            $table->string('jabatan');
+            $table->string('divisi');
             $table->text('status');
             $table->timestamps();
         });

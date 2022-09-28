@@ -62,15 +62,8 @@ class DetailProjectController extends Controller
             $laba = $jumlah_pendapatan - $jumlah_biaya; 
             $persentase = ($laba / $jumlah_biaya)*(100);
             $cair_project = Cair::select()->where('project_id',  $id)->get();
-            // $detailp= Project::find($id);
-            // $projectlampiran = Lampiranroject::select()->where('project_id',  $detailp->id)->get();
-            // $project_cair = Cair::select()->where('project_id',  $detailp->id)->get();
-           
             
 
-      
-        
-          
         if ($role->divisi_id==3 && $role->jabatan_id==4) {
              
             // return $lampiran;
@@ -288,7 +281,7 @@ class DetailProjectController extends Controller
             ]);
             if ($role->divisi_id==1 && $role->jabatan_id==7 ) {
 
-                $cair= $request->file ('cair_project')->store('lampiran-pencairan-project');
+                $cair= $request->file ('cair_project')->store('lampiran_pencairan_project');
                 if ($request->file ('cair_project')) {
                     $cair;
                     }
@@ -297,9 +290,9 @@ class DetailProjectController extends Controller
                 'cair_project' => $cair,
             ]); 
       
-            return redirect('/pengajuan/pengajuanprojek/pencairan/selesai');
+            return redirect('/pengajuan/cairproject/index');
         }
-            return redirect('/pengajuan/pengajuanprojek/projek_masuk');
+            return redirect('/pengajuan/projek_masuk');
             
 
     

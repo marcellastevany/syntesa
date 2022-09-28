@@ -79,10 +79,11 @@
                                                 ->get()
                                                 ->first();
                                             @endphp
-                                            @if ($histori->status==1 && $histori->jabatan==3 && $histori->divisi==3 || 
-                                                 $histori->status==1 && $histori->jabatan==4 && $histori->divisi==1 ||
-                                                 $histori->status==1 && $histori->jabatan==2 && $histori->divisi==4 || 
-                                                 $histori->status==1 && $histori->jabatan==1 && $histori->divisi==4 ||)
+                                            @if ($histori->status == 1 && $histori->jabatan == 4 && $histori->divisi == 3 ||
+                                            $histori->status == 1 && $histori->jabatan == 3 && $histori->divisi == 3 ||  
+                                            $histori->status == 1 && $histori->jabatan == 4 && $histori->divisi == 1 || 
+                                            $histori->status == 1 && $histori->jabatan == 2 ||
+                                            $histori->status == 1 && $histori->jabatan == 1  )
                                            
                                                 <tr>
                                                     <td> </td>
@@ -145,7 +146,7 @@
                                                                     data-feather="eye"></span></a>
                                                         @endif
 
-                                                        <a href="/project/lihat/{{ $project->id }}"
+                                                        <a href="/pengajuan/detailproject/{{ $project->id }}"
                                                             class="btn btn-icon btn-primary" title="Detail"><span
                                                                 data-feather="book-open"></span></a>
                                                        

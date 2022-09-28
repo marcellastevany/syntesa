@@ -329,7 +329,7 @@
                             class="menu-title text-truncate" data-i18n="surat">Pengajuan Project</span></a>
                     <ul class="menu-content">
                         <li class=" nav-item"><a class="d-flex align-items-center"
-                                href="/pengajuan/projek_masuk"><i data-feather="circle"></i><span
+                                href="/pengajuan/projek_masuk/"><i data-feather="circle"></i><span
                                     class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                     Masuk</span></a>
                         </li>

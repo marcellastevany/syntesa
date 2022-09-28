@@ -278,7 +278,7 @@
                             </div>
                         </div>
                     </section>
-                    @if ($status->status == 1 && $jabatan->jabatan == 2 && $divisi->divisi == 4)
+                    @if ($status->status == 1 && $jabatan->jabatan == 2)
                         <div class="row invoice-preview">
                             <div class="col-xl-12 col-md-8 col-12">
                                 <div class="card invoice-preview-card">

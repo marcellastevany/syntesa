@@ -319,7 +319,7 @@
          <h2 class="text-center "> Lampiran Pencairan</h2>
          <div class="col md-2 mb-1 ml-2 mt-2 d-flex justify-content-center">
                             <a type="button" class="btn  btn-primary mb-1 col-2 d-flex justify-content-center" target="blank" href="{{ asset('storage/' . $cair_project->cair_project) }}">
-                           
+                               
                                 Lihat Lampiran
                             </a>
 

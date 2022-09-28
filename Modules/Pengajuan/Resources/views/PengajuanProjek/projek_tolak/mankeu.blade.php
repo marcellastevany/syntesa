@@ -13,11 +13,11 @@
                     <div class="content-header-left col-md-9 col-12 mb-2">
                         <div class="row breadcrumbs-top">
                             <div class="col-12">
-                                <h2 class="content-header-title float-start mb-0">Project Diproses</h2>
+                                <h2 class="content-header-title float-start mb-0">Project Ditolak</h2>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">Pengajuan Project</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Pengajuan Diproses
+                                    <li class="breadcrumb-item active">Pengajuan Ditolak
                                     </li>
                                 </ol>
                             </div>
@@ -79,7 +79,10 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                           @if ($status->status==2 )
+                                           @if ($status->status==2 && $jabatan->jabatan == 7 || 
+                                           $status->status==2 && $jabatan->jabatan == 4 ||
+                                           $status->status==2 && $jabatan->jabatan == 3 ||
+                                           $status->status==2 && $jabatan->jabatan == 4 )
                                                 <tr>
                                                     <td> </td>
 

@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('pendapatan_histories', function (Blueprint $table) {
             $table->id();
-            $table->integer('project_history_id')->nullable();
+            $table->integer('project_history_id');
             $table->string('kategori');
-            $table->string('item')->nullable();
-            $table->string('jumlah')->nullable();
-            $table->string('waktu')->nullable();
-            $table->string('pendapatan_satuan')->nullable();
-            $table->string('total_pendapatan')->nullable();
+            $table->string('item');
+            $table->string('jumlah');
+            $table->string('waktu');
+            $table->string('pendapatan_satuan');
+            $table->string('total_pendapatan');
             $table->timestamps();
         });
     }
