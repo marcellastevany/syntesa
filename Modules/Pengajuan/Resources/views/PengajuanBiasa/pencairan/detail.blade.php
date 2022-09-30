@@ -45,7 +45,7 @@
                                     <li class="breadcrumb-item"><a href="/pengajuan/pencairan/create"> Pengajuan Masuk</a>
                                     </li>
                                     @elseif($status->status==3)
-                                    <li class="breadcrumb-item"><a href="/pengajuan/pencairan/create"> Pengajuan Selesai</a>
+                                    <li class="breadcrumb-item"><a href="/pengajuan/pencairan"> Pengajuan Selesai</a>
                                     </li>
                                     @endif
                                  
@@ -144,7 +144,7 @@
                             </div>
                  <hr>
  
-            @if ($status->status==1)
+            @if ($status->status==1 && $histori->divisi==1)
             <form method="POST" action="/pengajuan/histori/ {{  $detail->id }}" enctype="multipart/form-data" >
             @csrf
             @method('put') 
@@ -158,6 +158,45 @@
             <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0 mt-5">
                     <input type="hidden" name="status" id="status" value=3>
                     <input type="hidden" name="jabatan" id="jabatan" value=7>
+                    <input type="hidden" name="divisi" id="divisi" value=1>
+                    <button type="submit"  class="btn btn-success btn-lg">Cairkan</button>
+                </div>
+            </form>
+
+            @if ($status->status==1 && $histori->divisi==2)
+            <form method="POST" action="/pengajuan/histori/ {{  $detail->id }}" enctype="multipart/form-data" >
+            @csrf
+            @method('put') 
+            
+            <h3 class="mb-75 mt-3">Lampiran Pencairan</h3>
+            <div class="col-lg-12 col-md-12 mb-1 mb-sm-0  mt-3">
+                <label for="lampiran_cair" class="form-label">Input Lampiran Pencairan Disini</label>
+                <input class="form-control" type="file" id="lampiran_cair" name="lampiran_cair" />
+              </div>
+
+            <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0 mt-5">
+                    <input type="hidden" name="status" id="status" value=3>
+                    <input type="hidden" name="jabatan" id="jabatan" value=7>
+                    <input type="hidden" name="divisi" id="divisi" value=2>
+                    <button type="submit"  class="btn btn-success btn-lg">Cairkan</button>
+                </div>
+            </form>
+
+            @if ($status->status==1 && $histori->divisi==3)
+            <form method="POST" action="/pengajuan/histori/ {{  $detail->id }}" enctype="multipart/form-data" >
+            @csrf
+            @method('put') 
+            
+            <h3 class="mb-75 mt-3">Lampiran Pencairan</h3>
+            <div class="col-lg-12 col-md-12 mb-1 mb-sm-0  mt-3">
+                <label for="lampiran_cair" class="form-label">Input Lampiran Pencairan Disini</label>
+                <input class="form-control" type="file" id="lampiran_cair" name="lampiran_cair" />
+              </div>
+
+            <div class="d-grid col-lg-12 col-md-12 mb-1 mb-lg-0 mt-5">
+                    <input type="hidden" name="status" id="status" value=3>
+                    <input type="hidden" name="jabatan" id="jabatan" value=7>
+                    <input type="hidden" name="divisi" id="divisi" value=3>
                     <button type="submit"  class="btn btn-success btn-lg">Cairkan</button>
                 </div>
             </form>
@@ -189,7 +228,7 @@
 
             @elseif ($status->status==3)
             <div class="demo-inline-spacing mt-2">
-                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/selesai >Kembali</a></button>
+                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/pencairan >Kembali</a></button>
             </div>
             @endif
             @endif

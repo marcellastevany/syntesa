@@ -1,6 +1,134 @@
 @extends('pengajuan::layouts.main')
 
 @section('content')
+
+@php
+
+// biasa
+$biasas= Modules\Pengajuan\Entities\PengajuanBiasa::select()->get();
+$projects= Modules\Project\Entities\Project::select()->get();
+
+$masuk_manager_op = 0;
+foreach ($biasas as $biasa) {
+
+    $histori = Modules\Pengajuan\Entities\HistoriPengajuanBiasa::select()
+   ->where('pengajuan_biasa_id', $biasa->id )
+   
+   ->orderby('created_at','desc')
+   ->get()
+   ->first(); 
+
+$a_biasa = Modules\Pengajuan\Entities\PengajuanBiasa::select()
+->where('id', $histori->pengajuan_biasa_id )
+
+->get()
+->first();
+
+if($histori->status==4 && $histori->jabatan==7 && $histori->divisi==3 ) { $masuk_manager_op ++;}
+}
+
+
+$proses_manager_op  = 0;
+foreach ($biasas as $biasa) {
+
+    $histori = Modules\Pengajuan\Entities\HistoriPengajuanBiasa::select()
+   ->where('pengajuan_biasa_id', $biasa->id )
+   
+   ->orderby('created_at','desc')
+   ->get()
+   ->first(); 
+
+$a_biasa = Modules\Pengajuan\Entities\PengajuanBiasa::select()
+->where('id', $histori->pengajuan_biasa_id )
+
+->get()
+->first();
+
+if($histori->status==1 && $histori->jabatan==4 && $histori->divisi==3 ||
+$histori->status==1 && $histori->jabatan==3 && $histori->divisi==3 ||
+$histori->status==1 && $histori->jabatan==1 && $histori->divisi==3
+) { $proses_manager_op ++;}
+}
+
+$selesai_manager_op  = 0;
+foreach ($biasas as $biasa) {
+
+    $histori = Modules\Pengajuan\Entities\HistoriPengajuanBiasa::select()
+   ->where('pengajuan_biasa_id', $biasa->id )
+   
+   ->orderby('created_at','desc')
+   ->get()
+   ->first(); 
+
+$a_biasa = Modules\Pengajuan\Entities\PengajuanBiasa::select()
+->where('id', $histori->pengajuan_biasa_id )
+
+->get()
+->first();
+
+if($histori->status==3 && $histori->divisi==3
+) { $selesai_manager_op ++;}
+}
+
+$tolak_manager_op  = 0;
+foreach ($biasas as $biasa) {
+
+    $histori = Modules\Pengajuan\Entities\HistoriPengajuanBiasa::select()
+   ->where('pengajuan_biasa_id', $biasa->id )
+   
+   ->orderby('created_at','desc')
+   ->get()
+   ->first(); 
+
+$a_biasa = Modules\Pengajuan\Entities\PengajuanBiasa::select()
+->where('id', $histori->pengajuan_biasa_id )
+
+->get()
+->first();
+
+if($histori->status==2 && $histori->divisi==3
+) { $tolak_manager_op ++;}
+}
+
+
+//project
+$masuk_project_manager_op = 0;
+foreach ($projects as $project) {
+
+    $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+    ->where('project_id', $project->id )
+   ->orderby('created_at','desc')
+   ->get()
+   ->first(); 
+
+   $a_project = Modules\Project\Entities\Project::select()
+->where('id', $histori->project_id )
+->get()
+->first();
+
+if($histori->status==4 && $histori->jabatan==7 && $histori->divisi==3 ) { $masuk_project_manager_op ++;}
+}
+
+$masuk_project_manager_op = 0;
+foreach ($projects as $project) {
+
+    $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+    ->where('project_id', $project->id )
+   ->orderby('created_at','desc')
+   ->get()
+   ->first(); 
+
+   $a_project = Modules\Project\Entities\Project::select()
+->where('id', $histori->project_id )
+->get()
+->first();
+
+if($histori->status==4 && $histori->jabatan==7 && $histori->divisi==3 ) { $masuk_project_manager_op ++;}
+}
+
+@endphp
+
+
 @if ($role == 100)
  <!-- BEGIN: Content-->
  <div class="app-content content ">
@@ -345,7 +473,7 @@
                    
                                                                                 
 
-@elseif($role == 8)
+@elseif($role == 8) 
  <!-- BEGIN: Content-->
  <div class="app-content content ">
     <div class="content-overlay">
@@ -403,8 +531,8 @@
 
                                             </div>
                                         </div>
-                                        <div class="fw-bolder ">
-                                            {{ $jumlahmasuk }}</div>
+                                        <div class="fw-bolder "> {{ $masuk_manager_op  }}
+                                            </div>
                                     </div>
 
                                     <div class="transaction-item">
@@ -422,7 +550,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="fw-bolder">5
+                                        <div class="fw-bolder">{{ $proses_manager_op  }}
                                         </div>
                                     </div>
                                     <div class="transaction-item">
@@ -441,7 +569,7 @@
                                             </div>
                                         </div>
                                         <div class="fw-bolder ">
-                                            12</div>
+                                            {{ $tolak_manager_op  }}</div>
                                     </div>
                                 
 
@@ -461,8 +589,8 @@
 
                                             </div>
                                         </div>
-                                        <div class="fw-bolder ">
-                                            {{ $jumlahmasuk }}</div>
+                                        <div class="fw-bolder "> {{ $selesai_manager_op  }}
+                                            </div>
                                     </div>
                                     </div>
                                     </div>
@@ -499,7 +627,7 @@
                                             </div>
                                         </div>
                                         <div class="fw-bolder ">
-                                            14</div>
+                                            {{  $masuk_project_manager_op}}</div>
                                     </div>
 
                                     <div class="transaction-item">
@@ -1075,7 +1203,7 @@
                                             </div>
                                         </div>
                                         <div class="fw-bolder ">
-                                            {{ $jumlahmasuk }}</div>
+                                            </div>
                                     </div>
 
                                     <div class="transaction-item">
@@ -1133,7 +1261,7 @@
                                             </div>
                                         </div>
                                         <div class="fw-bolder ">
-                                            {{ $jumlahmasuk }}</div>
+                                            </div>
                                     </div>
                                     </div>
                                     </div>
@@ -1410,6 +1538,7 @@
                                     Dashboard
                                 </h2>
 
+                            
                               
                                  <!-- Transaction Card -->
                                 <div class="mt-2 col-lg-6 col-md-6">
@@ -1439,8 +1568,9 @@
                                             </div>
                                         </div>
                                         <div class="fw-bolder ">
-                                            {{ $jumlahmasuk }}</div>
+                                            </div>
                                     </div>
+                                    
 
                                     <div class="transaction-item">
                                         <div class="d-flex">
@@ -1457,9 +1587,10 @@
 
                                             </div>
                                         </div>
-                                        <div class="fw-bolder">5
+                                        <div class="fw-bolder">
                                         </div>
                                     </div>
+
                                     <div class="transaction-item">
                                         <div class="d-flex">
                                             <div
@@ -1497,7 +1628,7 @@
                                             </div>
                                         </div>
                                         <div class="fw-bolder ">
-                                            {{ $jumlahmasuk }}</div>
+                                            </div>
                                     </div>
                                     </div>
                                     </div>
@@ -1709,7 +1840,7 @@
                                         </div>
                                     </div>
                                     <div class="fw-bolder ">
-                                        {{ $jumlahmasuk }}</div>
+                                        </div>
                                 </div>
 
                                 <div class="transaction-item">
@@ -1823,7 +1954,7 @@
                                         </div>
                                     </div>
                                     <div class="fw-bolder ">
-                                        {{ $jumlahmasuk }}</div>
+                                        </div>
                                 </div>
 
                                 <div class="transaction-item">

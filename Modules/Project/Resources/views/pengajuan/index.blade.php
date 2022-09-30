@@ -28,7 +28,8 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th></th>
+                                            
+                                          
                                             <th>No</th>
                                             <th>No. Project</th>
                                             <th>Nama Project</th>
@@ -36,16 +37,41 @@
                                             <th>Tanggal Project</th>
                                             <th>Sales Order</th>
                                             <th>Deskripsi</th>
-                                            <th>Status</th>
                                             <th>Action</th>
+                                            <th>Keterangan</th>
+                                            <th>Status</th>
+                                        
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @if (!empty($projects))
                                             @foreach ($projects as $project)
+                                             
+                                            @php
+
+                                            $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+                                                ->where('project_id', $project->id)
+                                                ->orderby('created_at','desc')
+                                                ->get()
+                                                ->first();
+                                                $divisi = Modules\Pengajuan\Entities\Divisi::select()
+                                            ->where('divisi', $histori->divisi)
+                                            ->get()
+                                            ->first();
+                                        
+                                            $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+                                                ->where('status', $histori->status)
+                                                ->get()
+                                                ->first();
+                                            $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                                ->where('jabatan', $histori->jabatan)
+                                                ->get()
+                                                ->first();
+                                            @endphp
                                                 <tr>
+                                               
                                                     <td> </td>
-                                                    <td> </td>
+                                                    
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $project->no_project }} </td>
                                                     <td> {{ $project->nama_project }}</td>
@@ -67,18 +93,8 @@
                                                         @endif
                                                     </td>
                                                     <td>{{ $project->deskripsi }} </td>
-                                                    <td>
-
-                                                        @if ($project->status == 'Perubahan')
-                                                            <span
-                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
-                                                        @elseif ($project->status == 'Normal')
-                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
-                                                        @endif
-                                                    </td>
-                                                    
-                                                    
-                                                    <td>
+                                                   
+                                                        
                                                         @php
                                                             $lihat = Modules\Project\Entities\Lampiran::select()->where('project_id', $project->id);
                                                             $countLihat = $lihat->count();
@@ -87,6 +103,7 @@
                                                                 ->whereNull('dokumen')
                                                                 ->count();
                                                         @endphp
+                                                        <td>
                                                         @if ($countLihat > 0)
                                                             <a href="/project/pengajuan/"{{ $project->id }}
                                                                 class="btn btn-icon 
@@ -122,6 +139,31 @@
                                                         </form>
 
                                                     </td>
+
+                                                    <td>
+
+                                                        @if ($project->keterangan == 'Perubahan')
+                                                            <span
+                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
+                                                        @elseif ($project->keterangan == 'Normal')
+                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
+                                                        @endif
+                                                    </td>
+                                                    
+                                                        @if ($jabatan->jabatan == 4)
+                                                        <td><span class="badge rounded-pill badge-light-info">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @elseif ($jabatan->jabatan == 3)
+                                                        <td><span class="badge rounded-pill badge-light-primary">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @elseif ($jabatan->jabatan == 2)
+                                                        <td><span class="badge rounded-pill badge-light-primary">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @elseif ( $jabatan->jabatan == 1)
+                                                        <td><span class="badge rounded-pill badge-light-success">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        
+                                                        @elseif ($status->status==3)
+                                                        <td><span class="badge rounded-pill badge-light-success">Sudah {{ $status->keterangan }} </span> </td>
+                                                        @elseif ($status->status==4 )
+                                                        <td><span class="badge rounded-pill badge-light-warning">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @endif
                                                 </tr>
 
                                                 <div class="modal fade" id="lampiran_{{ $project->id }}" tabindex="-1"

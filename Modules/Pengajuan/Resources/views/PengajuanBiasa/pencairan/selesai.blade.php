@@ -13,9 +13,9 @@
                             <h2 class="content-header-title float-start mb-0">Pengajuan Selesai</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Pencairan Pengajuan</a>
+                                    <li class="breadcrumb-item"><a >Pencairan Pengajuan</a>
                                     </li>
-                                    <li class="breadcrumb-item active"><a href="#">Pengajuan Selesai </a>
+                                    <li class="breadcrumb-item active"><a href="/pengajuan/pencairan">Pengajuan Selesai </a>
                                     </li>
                                 </ol>
                             </div>

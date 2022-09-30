@@ -89,7 +89,7 @@
                                         
                                          @endphp
 
-                                         @if ($status->status==2)
+                                         @if ($status->status==2 && $jabatan->jabatan==1)
                                         <tr>
                                             <td></td>
 

@@ -79,8 +79,7 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                            @if ($status->status==2 && $jabatan->jabatan == 7 || 
-                                                 $status->status==2 && $jabatan->jabatan == 4 )
+                                            @if ($status->status==2 )
                                                 <tr>
                                                     <td> </td>
 

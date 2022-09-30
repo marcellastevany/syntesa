@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Pengajuan\Entities\Role;
 use Illuminate\Routing\Controller;
+use Modules\Pengajuan\Entities\HistoriPengajuanBiasa;
 use Modules\Pengajuan\Entities\PengajuanBiasa;
 
 class PengajuanController extends Controller
@@ -18,14 +19,12 @@ class PengajuanController extends Controller
     public function index()
     {
         $role=Role::select()->where('user_id',Auth::user()->id)->get()->first();
-        $jumlahmasuk=PengajuanBiasa::all()->count();
-        $jumlahselesai=PengajuanBiasa::all()->count();
+        
         return view('pengajuan::index', [
             'role'=>$role->role_id,
-            'jumlahmasuk' => $jumlahmasuk,
-            'jumlahselesai' => $jumlahselesai,
-        ]);
-    }
+           
+        ]);}
+    
 
     /**
      * Show the form for creating a new resource.

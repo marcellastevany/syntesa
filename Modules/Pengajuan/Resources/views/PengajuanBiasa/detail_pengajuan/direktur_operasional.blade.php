@@ -183,6 +183,7 @@
                 <button class="btn btn-success btn-lg py-1 px-3 mx-2 " >
                 <input type="hidden" name="status" id="status" value= 1 />
                 <input type="hidden" name="jabatan" id="jabatan" value= 3 />
+                <input type="hidden" name="divisi" id="divisi" value= 3 />
                  Setuju </button> 
                 </form>
            
@@ -192,6 +193,7 @@
                 <button class="btn btn-danger btn-lg py-1 px-3 mx-2" >
                 <input type="hidden" name="status" id="status" value= 2 />
                 <input type="hidden" name="jabatan" id="jabatan" value= 3 />
+                <input type="hidden" name="divisi" id="divisi" value= 3 />
                  Tolak
                 </button> 
                 </form>

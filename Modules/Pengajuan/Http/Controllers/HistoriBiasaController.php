@@ -201,6 +201,7 @@ class HistoriBiasaController extends Controller
             // 'user_id' => auth::user()->id,
             'jabatan' => $request->jabatan,
             'status' => $request->status,
+            'divisi' => $request->divisi,
         ]);  
         
         if ($role->divisi_id==1 && $role->jabatan_id==7 ) {

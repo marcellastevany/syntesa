@@ -178,6 +178,7 @@
                             <hr>
 
                             @if ($status->status == 4)
+                                @if($divisi->divisi==1)
                                 <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
                                 <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
                                     <form method="POST" action="/pengajuan/histori/ {{ $detail->id }}">
@@ -187,6 +188,7 @@
                                         <button class="btn btn-success btn-lg py-1 px-3 mx-2 ">
                                             <input type="hidden" name="status" id="status" value=1 />
                                             <input type="hidden" name="jabatan" id="jabatan" value=4 />
+                                            <input type="hidden" name="divisi" id="divisi" value=1 />
                                             Setuju </button>
                                     </form>
 
@@ -196,10 +198,62 @@
                                         <button class="btn btn-danger btn-lg py-1 px-3 mx-2">
                                             <input type="hidden" name="status" id="status" value=2 />
                                             <input type="hidden" name="jabatan" id="jabatan" value=4 />
+                                            <input type="hidden" name="divisi" id="divisi" value=1 />
                                             Tolak
                                         </button>
                                     </form>
                                 </div>
+                                @elseif($divisi->divisi==2)
+                                <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
+                                <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
+                                    <form method="POST" action="/pengajuan/histori/ {{ $detail->id }}">
+                                        @csrf
+                                        @method('put')
+
+                                        <button class="btn btn-success btn-lg py-1 px-3 mx-2 ">
+                                            <input type="hidden" name="status" id="status" value=1 />
+                                            <input type="hidden" name="jabatan" id="jabatan" value=4 />
+                                            <input type="hidden" name="divisi" id="divisi" value=2/>
+                                            Setuju </button>
+                                    </form>
+
+                                    <form method="POST" action="/pengajuan/histori/ {{ $detail->id }}">
+                                        @csrf
+                                        @method('put')
+                                        <button class="btn btn-danger btn-lg py-1 px-3 mx-2">
+                                            <input type="hidden" name="status" id="status" value=2 />
+                                            <input type="hidden" name="jabatan" id="jabatan" value=4 />
+                                            <input type="hidden" name="divisi" id="divisi" value=2 />
+                                            Tolak
+                                        </button>
+                                    </form>
+                                </div>
+                                @elseif($divisi->divisi==3)
+                                <h3 class="mb-75 mt-3 text-center">Tanggapi Pengajuan</h3>
+                                <div class="d-flex flex-column flex-sm-row pt-1 justify-content-center mt-3">
+                                    <form method="POST" action="/pengajuan/histori/ {{ $detail->id }}">
+                                        @csrf
+                                        @method('put')
+
+                                        <button class="btn btn-success btn-lg py-1 px-3 mx-2 ">
+                                            <input type="hidden" name="status" id="status" value=1 />
+                                            <input type="hidden" name="jabatan" id="jabatan" value=4 />
+                                            <input type="hidden" name="divisi" id="divisi" value=3 />
+                                            Setuju </button>
+                                    </form>
+
+                                    <form method="POST" action="/pengajuan/histori/ {{ $detail->id }}">
+                                        @csrf
+                                        @method('put')
+                                        <button class="btn btn-danger btn-lg py-1 px-3 mx-2">
+                                            <input type="hidden" name="status" id="status" value=2 />
+                                            <input type="hidden" name="jabatan" id="jabatan" value=4 />
+                                            <input type="hidden" name="divisi" id="divisi" value=3 />
+                                            Tolak
+                                        </button>
+                                    </form>
+                                </div>
+                                @endif
                             @elseif ($status->status == 3)
                                 <h3 class="mb-75 mt-5"> Lampiran Pencairan</h3>
 

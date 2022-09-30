@@ -42,9 +42,10 @@
                                             <th>Tanggal Project</th>
                                             <th>Sales Order</th>
                                             <th>Deskripsi</th>
+                                            <th>Action</th>
                                             <th>Keterangan</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                         
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,10 +80,7 @@
                                                     ->get()
                                                     ->first();
                                             @endphp
-                                            @if ($histori->status == 1 && $histori->jabatan == 4 && $histori->divisi == 3 ||
-                                            $histori->status == 1 && $histori->jabatan == 3 && $histori->divisi == 3 ||  
-                                            $histori->status == 1 && $histori->jabatan == 4 && $histori->divisi == 1 || 
-                                            $histori->status == 1 && $histori->jabatan == 2 ||
+                                            @if (
                                             $histori->status == 1 && $histori->jabatan == 1  )
                                                 <tr>
                                                     <td> </td>
@@ -108,18 +106,7 @@
                                                         @endif
                                                     </td>
                                                     <td>{{ $project->deskripsi }} </td>
-                                                    <td>
-
-                                                        @if ($project->keterangan == 'Perubahan')
-                                                            <span
-                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
-                                                        @elseif ($project->keterangan == 'Normal')
-                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
-                                                        @endif
-                                                    <td><span
-                                                            class="badge rounded-pill badge-light-primary">{{ $status->keterangan }}
-                                                            {{ $jabatan->keterangan }}</span></td>
-                                                    </td>
+                                                   
                                                     <td>
                                                         @php
                                                             $lihat = Modules\Project\Entities\Lampiran::select()->where('project_id', $project->id);
@@ -152,6 +139,30 @@
 
 
                                                     </td>
+                                                    <td>
+
+                                                        @if ($project->keterangan == 'Perubahan')
+                                                            <span
+                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
+                                                        @elseif ($project->keterangan == 'Normal')
+                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
+                                                        @endif
+                                                
+                                                        @if ($jabatan->jabatan == 4)
+                                                        <td><span class="badge rounded-pill badge-light-info">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @elseif ($jabatan->jabatan == 3)
+                                                        <td><span class="badge rounded-pill badge-light-primary">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @elseif ($jabatan->jabatan == 2)
+                                                        <td><span class="badge rounded-pill badge-light-primary">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @elseif ( $jabatan->jabatan == 1)
+                                                        <td><span class="badge rounded-pill badge-light-success">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        
+                                                        @elseif ($status->status==3)
+                                                        <td><span class="badge rounded-pill badge-light-success">Sudah {{ $status->keterangan }} </span> </td>
+                                                        @elseif ($status->status==4 )
+                                                        <td><span class="badge rounded-pill badge-light-warning">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span> </td>
+                                                        @endif
+                                                 
                                                 </tr>
                                             @endif
 

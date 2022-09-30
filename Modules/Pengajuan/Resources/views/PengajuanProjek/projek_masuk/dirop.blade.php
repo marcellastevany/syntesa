@@ -42,9 +42,10 @@
                                             <th>Tanggal Project</th>
                                             <th>Sales Order</th>
                                             <th>Deskripsi</th>
+                                            <th>Action</th>
                                             <th>Keterangan</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                         
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -105,17 +106,7 @@
                                                         @endif
                                                     </td>
                                                     <td>{{ $project->deskripsi }} </td>
-                                                    <td>
-
-                                                        @if ($project->keterangan == 'Perubahan')
-                                                            <span
-                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
-                                                        @elseif ($project->keterangan == 'Normal')
-                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
-                                                        @endif
-                                                        <td><span
-                                                            class="badge rounded-pill badge-light-warning">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span></td>
-                                                    </td>
+                                                    
                                                     <td>
                                                         @php
                                                             $lihat = Modules\Project\Entities\Lampiran::select()->where('project_id', $project->id);
@@ -147,6 +138,17 @@
                                                                 data-feather="book-open"></span></a>
                                                        
                                                        
+                                                    </td>
+                                                    <td>
+
+                                                        @if ($project->keterangan == 'Perubahan')
+                                                            <span
+                                                                class="badge rounded-pill badge-light-danger">Perubahan</span>
+                                                        @elseif ($project->keterangan == 'Normal')
+                                                            <span class="badge rounded-pill badge-light-info">Normal</span>
+                                                        @endif
+                                                        <td><span
+                                                            class="badge rounded-pill badge-light-warning">{{ $status->keterangan }} {{ $jabatan->keterangan }}</span></td>
                                                     </td>
                                                 </tr>
                                                      
