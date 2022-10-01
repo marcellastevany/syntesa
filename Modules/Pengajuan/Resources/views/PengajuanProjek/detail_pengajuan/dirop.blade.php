@@ -218,12 +218,30 @@
                                                 <br>
                                                 <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                             </div>
-
+                                          
+                                            @foreach ($projects as $project)
+                                            @if ($histori->status==1 && $histori->divisi==3 && $histori->jabatan==3)
                                             <div class="filtr-item col-sm-2 py-1">
                                                 <p style="text-align:center">Disetujui Oleh :</p>
-
-                                                <p style="text-align:center;">kosong</p>
+                                                <div class="visible-print text-center">
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $histori->jabatan pada tanggal $histori->updated_at"); !!}
+                                                 
+                                                </div>
+                                                <br>
+                                                <p style="text-align:center;">{{ $histori->jabatan  }}</p>
                                             </div>
+                                            @elseif ($histori->status==1 && $histori->divisi==3 && $histori->jabatan==4)
+                                            <div class="filtr-item col-sm-2 py-1">
+                                                <p style="text-align:center">Disetujui Oleh :</p>
+                                                <div class="visible-print text-center">
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $histori->jabatan pada tanggal $histori->updated_at"); !!}
+                                                 
+                                                </div>
+                                                <br>
+                                                <p style="text-align:center;">{{ $histori->jabatan  }}</p>
+                                            </div>
+                                            @endif
+                                            @endforeach
                                         </div>
 
 

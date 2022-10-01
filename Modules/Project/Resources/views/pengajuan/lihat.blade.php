@@ -25,6 +25,35 @@ data-menu="vertical-menu-modern" data-col="">
 
                                                 <div class="logo-wrapper">
                                                     @foreach ($projects as $project)
+                                                    @php
+
+                                                    $histori = Modules\Pengajuan\Entities\HistoriPengajuanProjek::select()
+                                                        ->where('project_id', $project->id)
+                                                        ->orderby('created_at','desc')
+                                                        ->get()
+                                                        ->first();
+              
+                                                    $projek =  Modules\Project\Entities\Project::select()
+                                                    ->where('id', $histori->project_id)
+                                                    ->get()
+                                                    ->first();
+                                                    $user = App\Models\User::select()
+                                                        ->where('id', $projek->user_id)
+                                                        ->get()
+                                                        ->first();
+                                                    $divisi = Modules\Pengajuan\Entities\Divisi::select()
+                                                        ->where('divisi', $projek->divisi)
+                                                        ->get()
+                                                        ->first();
+                                                    $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+                                                        ->where('status', $histori->status)
+                                                        ->get()
+                                                        ->first();
+                                                    $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                                        ->where('jabatan', $histori->jabatan)
+                                                        ->get()
+                                                        ->first();
+                                                    @endphp
                                                         <h3 class="text" style="text-align:center">PT SAYAGA WISATA BOGOR
                                                         </h3>
                                                         <h3 class="text" style="text-align:center">
@@ -175,6 +204,7 @@ data-menu="vertical-menu-modern" data-col="">
                                         <!-- /.col -->
                                     </div>
                                     <!-- /.row -->
+
                                     <div>
                                         <div class="filter-container p-0 row">
                                             <div class="filtr-item col-sm-2 py-1" data-category="1"
@@ -187,11 +217,17 @@ data-menu="vertical-menu-modern" data-col="">
                                                 <br>
                                                 <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                             </div>
-
+                                            @if ($histori->$status==1 && $histori->divisi==3 && $histori->jabatan==4)
                                             <div class="filtr-item col-sm-2 py-1">
                                                 <p style="text-align:center">Disetujui Oleh :</p>
-                                                <p style="text-align:center;">Marcella</p>
+                                                <div class="visible-print text-center">
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $histori->jabatan pada tanggal $histori->updated_at"); !!}
+                                                 
+                                                </div>
+                                                <br>
+                                                <p style="text-align:center;">{{ $histori->jabatan }}</p>
                                             </div>
+                                            @endif
                                         </div>
 
 
