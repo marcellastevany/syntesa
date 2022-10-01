@@ -233,9 +233,10 @@
 
 
                                     </div>
-                                    <div class="col md-3 mb-2 ml-2">
+                                    
+                                    <div class="col md-3 mb-2 ml-2 ">
                                         <a href="{{ url('/project/print/' . $project->id) }}" target="blank"
-                                            class="btn btn-primary float-end mx-1"> Print
+                                            class="btn btn-primary float-end mx-1 "> Print
 
                                         </a>
                                         <div class="modal-size-sm d-inline-block float-end">
@@ -246,7 +247,7 @@
                                             </button>
                                             <!-- Modal -->
                                             <div class="modal fade text-start" id="small" tabindex="-1">
-                                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                                <div class="modal-dialog modal-dialog-centered modal-sm ">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h4 class="modal-title" id="myModalLabel19">Riwayat</h4>
@@ -280,6 +281,7 @@
                                 </div>
 
 
+                            </div>
                             </div>
                         </div>
                     </section>

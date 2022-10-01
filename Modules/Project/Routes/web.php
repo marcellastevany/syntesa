@@ -29,7 +29,7 @@ Route::prefix('project')->group(function () {
     // Route::resource('/uncomplete', DuncompleteController::class);
     Route::resource('/total', DtotalController::class);
     Route::resource('/lihat', DetailController::class);
-    Route::resource('/print', DprosesController::class);
+    Route::resource('/print', PrintController::class);
     Route::resource('/edit', DetailController::class);
     Route::get('/project/pengajuan/checkSlug', [PengajuanController::class , 'checkSlug']);
     Route::get('/lampiran/{id}', [PengajuanController::class , 'lampiran']);

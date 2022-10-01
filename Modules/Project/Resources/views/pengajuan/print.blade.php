@@ -228,7 +228,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="filtr-item col-sm-2 py-1" data-category="1"
                                         data-sort="white sample">
                                         <p style="class=text-left">Diajukan Oleh :</p>
-                                        <p style="class=text-left">Marcella</p>
+                                        <div class="visible-print text-center">
+                                            {!! QrCode::size(100)->generate("Pengajuan-$project->no_project yang mengajukan $project->pemegang_project pada tanggal $project->tgl_project "); !!}
+                                         
+                                        </div>
+                                        <br>
+                                        <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                     </div>
 
                                     <div class="filtr-item col-sm-2 py-1">
