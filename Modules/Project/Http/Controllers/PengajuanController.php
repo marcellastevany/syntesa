@@ -388,10 +388,11 @@ class PengajuanController extends Controller
         return redirect('/project/pengajuan');
     }
 
-    // public function generate ($id)
-    // {
-    //     $project = Project::find($id);
-    //     $qrcode = QrCode::size(400)->generate($project->id);
-    //     return view('qrcode',compact('qrcode'));
-    // }
+    public function grafik() {
+        
+
+    }  
+
+
+
 }

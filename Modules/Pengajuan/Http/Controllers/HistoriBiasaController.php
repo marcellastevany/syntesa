@@ -219,7 +219,7 @@ class HistoriBiasaController extends Controller
 
 
     
-        return redirect('/pengajuan/masuk/show') -> with ( 'berhasil' , 'Pengajuan Berhasil di Setujui'); 
+        return redirect('/pengajuan/masuk/show'); 
      
         // $rules = [
         //     'status' => 'required',

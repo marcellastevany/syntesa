@@ -53,6 +53,27 @@ data-menu="vertical-menu-modern" data-col="">
                                                         ->where('jabatan', $histori->jabatan)
                                                         ->get()
                                                         ->first();
+                                                        $ttdmanagerop = Modules\Pengajuan\Entities\Ttdmanagerop::select()
+                                                                ->where('project_id', $project->id)
+                                                                ->get()
+                                                                ->first();
+                                                          
+                                                                $ttddirop = Modules\Pengajuan\Entities\Ttddirop::select()
+                                                                ->where('project_id', $project->id)
+                                                                ->get()
+                                                                ->first();
+                                                                $ttdmankeu = Modules\Pengajuan\Entities\Ttdmankeu::select()
+                                                                ->where('project_id', $project->id)
+                                                                ->get()
+                                                                ->first();
+                                                                $ttddirkeu = Modules\Pengajuan\Entities\Ttddirkeu::select()
+                                                                ->where('project_id', $project->id)
+                                                                ->get()
+                                                                ->first();
+                                                                $ttddirut = Modules\Pengajuan\Entities\Ttddirut::select()
+                                                                ->where('project_id', $project->id)
+                                                                ->get()
+                                                                ->first();
                                                     @endphp
                                                         <h3 class="text" style="text-align:center">PT SAYAGA WISATA BOGOR
                                                         </h3>
@@ -217,17 +238,181 @@ data-menu="vertical-menu-modern" data-col="">
                                                 <br>
                                                 <p style="text-align:center;">{{ $project->pemegang_project }}</p>
                                             </div>
-                                            @if ($histori->$status==1 && $histori->divisi==3 && $histori->jabatan==4)
-                                            <div class="filtr-item col-sm-2 py-1">
+                                            @if ($histori->status==1 && $histori->divisi==3 && $histori->jabatan==4)
+                                              <div class="filtr-item col-sm-2 py-1">
                                                 <p style="text-align:center">Disetujui Oleh :</p>
                                                 <div class="visible-print text-center">
-                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $histori->jabatan pada tanggal $histori->updated_at"); !!}
+                                                    {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $ttdmanagerop->jabatan_manop pada tanggal $ttdmanagerop->updated_at "); !!}
                                                  
                                                 </div>
                                                 <br>
-                                                <p style="text-align:center;">{{ $histori->jabatan }}</p>
+                                                <p style="text-align:center;">{{ $ttdmanagerop->jabatan_manop  }}</p>
                                             </div>
-                                            @endif
+                                                @endif
+
+                                                @if ($histori->status==1 && $histori->divisi==3 && $histori->jabatan==3)
+                                             
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $ttdmanagerop->jabatan_manop pada tanggal $ttdmanagerop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmanagerop->jabatan_manop  }}</p>
+                                                </div>
+                                           
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttddirop->jabatan_dirop  pada tanggal  $ttddirop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttddirop->jabatan_dirop }}</p>
+                                                </div>
+                                               
+                                               
+                                                @endif
+    
+                                                @if ($histori->status==1 && $histori->divisi==1 && $histori->jabatan==4)
+    
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $ttdmanagerop->jabatan_manop pada tanggal $ttdmanagerop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmanagerop->jabatan_manop  }}</p>
+                                                </div>
+                                                
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttddirop->jabatan_dirop  pada tanggal  $ttddirop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttddirop->jabatan_dirop }}</p>
+                                                </div>
+    
+                                               
+                                                
+                                               
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttdmankeu->jabatan_mankeu  pada tanggal  $ttdmankeu->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmankeu->jabatan_mankeu }}</p>
+                                                </div>
+                                               
+                                                @endif
+                                                @if ($histori->status==1 && $histori->divisi==4 && $histori->jabatan==2)
+    
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $ttdmanagerop->jabatan_manop pada tanggal $ttdmanagerop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmanagerop->jabatan_manop  }}</p>
+                                                </div>
+                                                
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttddirop->jabatan_dirop  pada tanggal  $ttddirop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttddirop->jabatan_dirop }}</p>
+                                                </div>
+    
+                                               
+                                                
+                                               
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttdmankeu->jabatan_mankeu  pada tanggal  $ttdmankeu->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmankeu->jabatan_mankeu }}</p>
+                                                </div>
+    
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh $ttddirkeu->jabatan_dirkeu pada tanggal  $ttddirkeu->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{$ttddirkeu->jabatan_dirkeu }}</p>
+                                                </div>
+                                               
+                                                @endif
+                                                @if ($histori->status==1 && $histori->divisi==4 && $histori->jabatan==1)
+    
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project disetujui oleh $ttdmanagerop->jabatan_manop pada tanggal $ttdmanagerop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmanagerop->jabatan_manop  }}</p>
+                                                </div>
+                                                
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttddirop->jabatan_dirop  pada tanggal  $ttddirop->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttddirop->jabatan_dirop }}</p>
+                                                </div>
+    
+                                               
+                                                
+                                               
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh  $ttdmankeu->jabatan_mankeu  pada tanggal  $ttdmankeu->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttdmankeu->jabatan_mankeu }}</p>
+                                                </div>
+    
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh $ttddirkeu->jabatan_dirkeu pada tanggal  $ttddirkeu->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{$ttddirkeu->jabatan_dirkeu }}</p>
+                                                </div>
+    
+                                                <div class="filtr-item col-sm-2 py-1">
+                                                    <p style="text-align:center">Disetujui Oleh :</p>
+                                                    <div class="visible-print text-center">
+                                                        {!! QrCode::size(100)->generate("Pengajuan-$project->no_project  disetujui oleh $ttddirut->jabatan_dirut pada tanggal  $ttddirut->updated_at "); !!}
+                                                     
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align:center;">{{ $ttddirut->jabatan_dirut }}</p>
+                                                </div>
+                                               
+                                                @endif
                                         </div>
 
 

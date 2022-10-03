@@ -14,6 +14,11 @@ use Illuminate\Contracts\Support\Renderable;
 use Modules\Pengajuan\Entities\PencairanProject;
 use Modules\Pengajuan\Entities\LampiranProject;
 use Modules\Pengajuan\Entities\HistoriPengajuanProjek;
+use Modules\Pengajuan\Entities\Ttddirkeu;
+use Modules\Pengajuan\Entities\Ttddirop;
+use Modules\Pengajuan\Entities\Ttddirut;
+use Modules\Pengajuan\Entities\Ttdmanagerop;
+use Modules\Pengajuan\Entities\Ttdmankeu;
 
 class DetailProjectController extends Controller
 {
@@ -279,6 +284,7 @@ class DetailProjectController extends Controller
                 'divisi' => $request->divisi,
                 'status' => $request->status,
             ]);
+            
             if ($role->divisi_id==1 && $role->jabatan_id==7 ) {
 
                 $cair= $request->file ('cair_project')->store('lampiran_pencairan_project');
@@ -290,8 +296,45 @@ class DetailProjectController extends Controller
                 'cair_project' => $cair,
             ]); 
       
-            return redirect('/pengajuan/cairproject/index');
-        }
+            return redirect('/pengajuan/cairproject/index');}
+
+         if ($role->divisi_id==3 && $role->jabatan_id==4 ) {
+
+            Ttdmanagerop::create([
+            'project_id' => $id,
+            'jabatan_manop' => $request->jabatan_manop,
+            'divisi' => $request->divisi,
+        ]); }
+         if ($role->divisi_id==3 && $role->jabatan_id==3 ) {
+
+            Ttddirop::create([
+            'project_id' => $id,
+            'jabatan_dirop' => $request->jabatan_dirop,
+            'divisi' => $request->divisi,
+        ]); }
+         if ($role->divisi_id==1 && $role->jabatan_id==4 ) {
+
+            Ttdmankeu::create([
+            'project_id' => $id,
+            'jabatan_mankeu' => $request->jabatan_mankeu,
+            'divisi' => $request->divisi,
+        ]); }
+         if ($role->divisi_id==4 && $role->jabatan_id==2 ) {
+
+            Ttddirkeu::create([
+            'project_id' => $id,
+            'jabatan_dirkeu' => $request->jabatan_dirkeu,
+            'divisi' => $request->divisi,
+        ]); }
+         if ($role->divisi_id==4 && $role->jabatan_id==1 ) {
+
+            Ttddirut::create([
+            'project_id' => $id,
+            'jabatan_dirut' => $request->jabatan_dirut,
+            'divisi' => $request->divisi,
+        ]); }
+
+        
             return redirect('/pengajuan/projek_masuk');
             
 

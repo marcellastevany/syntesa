@@ -51,6 +51,26 @@ class Project extends Model
     // {
     //     return $this->belongsTo(LampiranProject::class);
     // }
+    public function ttddirop()
+    {
+        return $this->hasMany(Lampiran::class, 'project_id');
+    }
+    public function ttddirut()
+    {
+        return $this->hasMany(Lampiran::class, 'project_id');
+    }
+    public function ttdmanagerop()
+    {
+        return $this->hasMany(Lampiran::class, 'project_id');
+    }
+    public function ttddirkeu()
+    {
+        return $this->hasMany(Lampiran::class, 'project_id');
+    }
+    public function ttdmankeu()
+    {
+        return $this->hasMany(Lampiran::class, 'project_id');
+    }
    
     }
  
